@@ -5,6 +5,7 @@
     display: inline-block;
     position: relative;
     margin-bottom: -3.5px;
+    cursor: pointer;
 }
 
 .copy-button {
@@ -28,8 +29,12 @@
 
 .ColorBox:hover .copy-button {
     opacity: 1;
-    transition: opacity .5s;
+    transition: all.5s;
     cursor: pointer;
+}
+
+.copy-button:hover {
+    transform: scale(1.2);
 }
 
 .box-content {
