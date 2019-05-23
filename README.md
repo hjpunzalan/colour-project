@@ -7,4 +7,5 @@
   <li>Chroma-js: Allows for colour picking.</li>
   <li>RC-slider: Slider component that is customisable </li>
   <li>React-Copy-To-Clipboard: Clicking a child component copies a text to clipboard</li>
+  <li>Material UI for easy out of the box components</li>
   </ul>
