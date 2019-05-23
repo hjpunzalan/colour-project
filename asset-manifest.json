@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/colour-project/static/css/main.a6cf69e2.chunk.css",
+    "main.js": "/colour-project/static/js/main.4a439c80.chunk.js",
+    "main.js.map": "/colour-project/static/js/main.4a439c80.chunk.js.map",
+    "runtime~main.js": "/colour-project/static/js/runtime~main.94375959.js",
+    "runtime~main.js.map": "/colour-project/static/js/runtime~main.94375959.js.map",
+    "static/css/2.509658c0.chunk.css": "/colour-project/static/css/2.509658c0.chunk.css",
+    "static/js/2.4635bde4.chunk.js": "/colour-project/static/js/2.4635bde4.chunk.js",
+    "static/js/2.4635bde4.chunk.js.map": "/colour-project/static/js/2.4635bde4.chunk.js.map",
+    "index.html": "/colour-project/index.html",
+    "precache-manifest.0ce1253126a9de57a2c41e63152285ce.js": "/colour-project/precache-manifest.0ce1253126a9de57a2c41e63152285ce.js",
+    "service-worker.js": "/colour-project/service-worker.js",
+    "static/css/2.509658c0.chunk.css.map": "/colour-project/static/css/2.509658c0.chunk.css.map",
+    "static/css/main.a6cf69e2.chunk.css.map": "/colour-project/static/css/main.a6cf69e2.chunk.css.map"
+  }
+}
