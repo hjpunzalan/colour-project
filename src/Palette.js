@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
 import './Palette.css';
-import { statement } from '@babel/template';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
@@ -17,8 +16,8 @@ export default class Pallete extends Component {
 	}
 
 	render() {
-		const colors = this.props.palette;
-		const { level } = this.statement;
+		const colors = this.props.palette.colors;
+		const { level } = this.state;
 		const colorBoxes = colors[level].map(box => (
 			<ColorBox background={box.hex} name={box.name} />
 		));
