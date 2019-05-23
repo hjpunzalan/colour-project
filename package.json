@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "homepage": "https://hjpunzalan.github.io/colour-project",
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
     "chroma-js": "^2.0.3",
     "gh-pages": "^2.0.1",
     "rc-slider": "^8.6.11",
