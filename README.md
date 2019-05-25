@@ -8,4 +8,5 @@
   <li>RC-slider: Slider component that is customisable </li>
   <li>React-Copy-To-Clipboard: Clicking a child component copies a text to clipboard</li>
   <li>Material UI for easy out of the box components</li>
+  <li>Material UI's JSS HOC</li>
   </ul>
