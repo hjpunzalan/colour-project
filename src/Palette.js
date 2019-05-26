@@ -1,36 +1,9 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
-import './Palette.css';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
 import { withStyles } from '@material-ui/styles';
-
-const styles = {
-	Palette: {
-		height: '100vh',
-		overflow: 'hidden',
-		display: 'flex',
-		flexDirection: 'column'
-	},
-
-	PaletteColors: {
-		height: '90%'
-	},
-
-	PaletteFooter: {
-		backgroundColor: '#fff',
-		height: '5vh',
-		display: 'flex',
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-		fontWeight: 'bold'
-	},
-
-	emoji: {
-		fontSize: '1.5rem',
-		margin: '0 1rem'
-	}
-};
+import styles from './styles/PaletteStyles';
 
 class Pallete extends Component {
 	constructor(props) {
@@ -70,12 +43,7 @@ class Pallete extends Component {
 					showSlider={true}
 				/>
 				<div className={classes.PaletteColors}>{colorBoxes}</div>
-				<PaletteFooter
-					PaletteFooter={classes.PaletteFooter}
-					paletteName={paletteName}
-					emoji={emoji}
-					emojiClass={classes.emoji}
-				/>
+				<PaletteFooter paletteName={paletteName} emoji={emoji} />
 			</div>
 		);
 	}
