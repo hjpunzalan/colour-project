@@ -28,6 +28,7 @@ export default class Pallete extends Component {
 				background={box[format]}
 				name={box.name}
 				moreUrl={`/palette/${id}/${box.id}`}
+				showLink={true}
 			/>
 		));
 		return (
