@@ -30,7 +30,7 @@ class Pallete extends Component {
 				key={box.id}
 				background={box[format]}
 				name={box.name}
-				moreUrl={`/palette/${id}/${box.id}`}
+				moreUrl={`/colour-project/palette/${id}/${box.id}`}
 				showingFullPalette={true}
 			/>
 		));
@@ -43,7 +43,7 @@ class Pallete extends Component {
 					showSlider={true}
 				/>
 				<div className={classes.PaletteColors}>{colorBoxes}</div>
-				<PaletteFooter paletteName={paletteName} emoji={emoji} />
+				<PaletteFooter id={id} paletteName={paletteName} emoji={emoji} />
 			</div>
 		);
 	}

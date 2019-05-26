@@ -1,14 +1,20 @@
 import React from 'react';
 import { withStyles } from '@material-ui/styles';
 import styles from './styles/PaletteFooterStyles';
+import { Link } from 'react-router-dom';
 
 function PaletteFooter(props) {
-	const { paletteName, emoji, classes } = props;
+	const { paletteName, emoji, classes, id } = props;
 	return (
-		<footer className={classes.PaletteFooter}>
-			{paletteName}
-			<span className={classes.emoji}>{emoji}</span>
-		</footer>
+		<Link
+			to={`/colour-project/palette/${id}`}
+			className={classes.PaletteFooter}
+		>
+			<footer>
+				{paletteName}
+				<span className={classes.emoji}>{emoji}</span>
+			</footer>
+		</Link>
 	);
 }
 

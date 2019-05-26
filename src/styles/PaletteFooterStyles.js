@@ -5,7 +5,9 @@ const styles = {
 		display: 'flex',
 		justifyContent: 'flex-end',
 		alignItems: 'center',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		textDecoration: 'none',
+		color: '#000'
 	},
 
 	emoji: {

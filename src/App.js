@@ -18,14 +18,14 @@ export default class App extends Component {
 			<Switch>
 				<Route
 					exact
-					path="/"
+					path="/colour-project"
 					render={routeProps => (
 						<PaletteList palettes={seedColors} {...routeProps} />
 					)}
 				/>
 				<Route
 					exact
-					path="/palette/:id"
+					path="/colour-project/palette/:id"
 					render={routeProps => (
 						<Palette
 							palette={generatePalette(
@@ -35,7 +35,7 @@ export default class App extends Component {
 					)}
 				/>
 				<Route
-					path="/palette/:paletteId/:colorId"
+					path="/colour-project/palette/:paletteId/:colorId"
 					render={routeProps => (
 						<SingleColorPalette
 							colorId={routeProps.match.params.colorId}
@@ -46,7 +46,7 @@ export default class App extends Component {
 					)}
 				/>
 
-				<Redirect to="/" />
+				<Redirect to="/colour-project" />
 			</Switch>
 			// {/* <div>
 			// 	<Palette palette={generatePalette(seedColors[4])} />
