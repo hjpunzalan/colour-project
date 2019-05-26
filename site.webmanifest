@@ -1,8 +1,7 @@
 {
     "name": "Colour-App",
     "short_name": "Colour-App",
-    "icons": [
-        {
+    "icons": [{
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
@@ -15,5 +14,6 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "standalone",
+    "start_url": "/"
 }
