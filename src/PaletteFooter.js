@@ -1,11 +1,11 @@
 import React from 'react';
 
 export default function PaletteFooter(props) {
-	const { paletteName, emoji } = props;
+	const { paletteName, emoji, PaletteFooter, emojiClass } = props;
 	return (
-		<footer className="Palette-footer">
+		<footer className={PaletteFooter}>
 			{paletteName}
-			<span className="emoji">{emoji}</span>
+			<span className={emojiClass}>{emoji}</span>
 		</footer>
 	);
 }
