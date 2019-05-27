@@ -1,6 +1,4 @@
 const styles = {
-	'@import':
-		'url(https://fonts.googleapis.com/css?family=Pacifico&display=swap)',
 	Navbar: {
 		display: 'flex',
 		alignItems: 'center',
@@ -9,9 +7,9 @@ const styles = {
 	},
 
 	logo: {
-		marginRight: 40,
+		marginRight: '40px',
 		padding: '0 13px',
-		fontSize: 30,
+		fontSize: '30px',
 		fontFamily: 'Pacifico, cursive',
 		height: '100%',
 		display: 'flex',
@@ -23,7 +21,7 @@ const styles = {
 		}
 	},
 	slider: {
-		width: 340,
+		width: '340px',
 		margin: '0 10px',
 		display: 'inline-block',
 

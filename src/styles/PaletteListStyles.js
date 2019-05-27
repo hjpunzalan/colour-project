@@ -18,7 +18,17 @@ const styles = {
 		display: 'flex',
 		width: '100%',
 		justifyContent: 'space-between',
-		color: 'white'
+		color: 'white',
+		alignItems: 'center',
+		margin: '1rem 0',
+
+		'& h1': {
+			fontSize: '1rem'
+		},
+
+		'& a': {
+			color: 'white'
+		}
 	},
 	palettes: {
 		boxSizing: 'border-box',
@@ -26,6 +36,11 @@ const styles = {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(auto-fit, minmax(min-content, 30%))',
 		gridGap: '5%'
+	},
+	logo: {
+		fontFamily: 'Pacifico, cursive',
+		fontWeight: '200',
+		fontSize: '2rem'
 	}
 };
 
