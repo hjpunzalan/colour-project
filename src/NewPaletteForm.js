@@ -1,6 +1,5 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,68 +11,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { SketchPicker } from 'react-color';
 import Button from '@material-ui/core/Button';
-
-const drawerWidth = 400;
-
-const useStyles = makeStyles(theme => ({
-	root: {
-		display: 'flex'
-	},
-	appBar: {
-		transition: theme.transitions.create(['margin', 'width'], {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.leavingScreen
-		})
-	},
-	appBarShift: {
-		width: `calc(100% - ${drawerWidth}px)`,
-		marginLeft: drawerWidth,
-		transition: theme.transitions.create(['margin', 'width'], {
-			easing: theme.transitions.easing.easeOut,
-			duration: theme.transitions.duration.enteringScreen
-		})
-	},
-	menuButton: {
-		marginRight: theme.spacing(2)
-	},
-	hide: {
-		display: 'none'
-	},
-	drawer: {
-		width: drawerWidth,
-		flexShrink: 0
-	},
-	drawerPaper: {
-		width: drawerWidth
-	},
-	drawerHeader: {
-		display: 'flex',
-		alignItems: 'center',
-		padding: '0 8px',
-		...theme.mixins.toolbar,
-		justifyContent: 'flex-end'
-	},
-	content: {
-		flexGrow: 1,
-		padding: theme.spacing(3),
-		transition: theme.transitions.create('margin', {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.leavingScreen
-		}),
-		marginLeft: -drawerWidth
-	},
-	contentShift: {
-		transition: theme.transitions.create('margin', {
-			easing: theme.transitions.easing.easeOut,
-			duration: theme.transitions.duration.enteringScreen
-		}),
-		marginLeft: 0
-	}
-}));
+import useStyles from './styles/NewPaletteFormStyles';
 
 function NewPaletteForm() {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
+	const [currentColor, setCurrentColor] = React.useState('teal');
+	const [colors, setColor] = React.useState(['purple', 'red']);
 
 	function handleDrawerOpen() {
 		setOpen(true);
@@ -81,6 +25,14 @@ function NewPaletteForm() {
 
 	function handleDrawerClose() {
 		setOpen(false);
+	}
+
+	function updateCurrentColor(newColor) {
+		setCurrentColor(newColor.hex);
+	}
+
+	function addNewColor() {
+		setColor([...colors, currentColor]);
 	}
 
 	return (
@@ -132,10 +84,15 @@ function NewPaletteForm() {
 					</Button>
 				</div>
 				<SketchPicker
-					color="purple"
-					onChangeComplete={newColor => console.log(newColor)}
+					color={currentColor}
+					onChangeComplete={newColor => updateCurrentColor(newColor)}
 				/>
-				<Button variant="contained" color="primary">
+				<Button
+					variant="contained"
+					color="primary"
+					style={{ backgroundColor: currentColor }}
+					onClick={addNewColor}
+				>
 					Add Color
 				</Button>
 			</Drawer>
@@ -145,6 +102,11 @@ function NewPaletteForm() {
 				})}
 			>
 				<div className={classes.drawerHeader} />
+				<ul>
+					{colors.map(color => (
+						<li>{color}</li>
+					))}
+				</ul>
 			</main>
 		</div>
 	);
