@@ -1,18 +1,18 @@
 const styles = {
 	root: {
 		backgroundColor: 'blue',
-		height: '100vh',
+		height: '100%',
 		display: 'flex',
 		alignItems: 'flex-start',
 		justifyContent: 'center'
 	},
 	container: {
-		width: '50%',
-		height: '100%',
+		width: '60%',
+		height: '100vh',
 		display: 'flex',
 		alignItems: 'flex-start',
 		flexDirection: 'column',
-		flexWrap: 'wrap'
+		overflowY: 'scroll'
 	},
 	nav: {
 		display: 'flex',
@@ -34,8 +34,10 @@ const styles = {
 		boxSizing: 'border-box',
 		width: '100%',
 		display: 'grid',
-		gridTemplateColumns: 'repeat(auto-fit, minmax(min-content, 30%))',
-		gridGap: '5%'
+		padding: '0 2rem',
+		gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+		gridColumnGap: '5%',
+		gridRowGap: '2%'
 	},
 	logo: {
 		fontFamily: 'Pacifico, cursive',

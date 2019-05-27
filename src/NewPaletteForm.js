@@ -12,6 +12,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { SketchPicker } from 'react-color';
 import Button from '@material-ui/core/Button';
 import useStyles from './styles/NewPaletteFormStyles';
+import DraggableColorBox from './DraggableColorBox';
 
 function NewPaletteForm() {
 	const classes = useStyles();
@@ -102,11 +103,9 @@ function NewPaletteForm() {
 				})}
 			>
 				<div className={classes.drawerHeader} />
-				<ul>
-					{colors.map(color => (
-						<li>{color}</li>
-					))}
-				</ul>
+				{colors.map(color => (
+					<DraggableColorBox color={color} />
+				))}
 			</main>
 		</div>
 	);
