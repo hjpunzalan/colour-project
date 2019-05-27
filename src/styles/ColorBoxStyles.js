@@ -1,18 +1,6 @@
 import chroma from 'chroma-js';
 
 const styles = {
-	copyText: {
-		color: props =>
-			chroma(props.background).luminance() >= 0.6
-				? 'rgba(90, 88, 88, 0.822)'
-				: 'white'
-	},
-	colorName: {
-		color: props =>
-			chroma(props.background).luminance() <= 0.2
-				? 'white'
-				: 'rgba(90, 88, 88, 0.822)'
-	},
 	seeMore: {
 		color: props =>
 			chroma(props.background).luminance() >= 0.65
@@ -130,6 +118,18 @@ const styles = {
 		opacity: '1',
 		transform: 'scale(1)',
 		zIndex: '20'
+	},
+	copyText: {
+		color: props =>
+			chroma(props.background).luminance() >= 0.6
+				? 'rgba(90, 88, 88, 0.822)'
+				: 'white'
+	},
+	colorName: {
+		color: props =>
+			chroma(props.background).luminance() <= 0.2
+				? 'white'
+				: 'rgba(90, 88, 88, 0.822)'
 	}
 };
 
