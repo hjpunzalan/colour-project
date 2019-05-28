@@ -78,6 +78,10 @@ function NewPaletteForm(props) {
 		props.history.push('/');
 	}
 
+	function deleteBox(colorName) {
+		setColor(colors.filter(color => color.name !== colorName));
+	}
+
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -177,6 +181,7 @@ function NewPaletteForm(props) {
 						key={color.name}
 						color={color.color}
 						name={color.name}
+						deleteBox={deleteBox}
 					/>
 				))}
 			</main>
