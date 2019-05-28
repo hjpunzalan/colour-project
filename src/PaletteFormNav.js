@@ -28,7 +28,7 @@ function PaletteFormNav(props) {
 		});
 	}, [props.palettes]);
 	return (
-		<div>
+		<div className={classes.root}>
 			<CssBaseline />
 			<AppBar
 				color="default"
@@ -48,8 +48,10 @@ function PaletteFormNav(props) {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" noWrap>
-						Persistent drawer
+						Create a Palette
 					</Typography>
+				</Toolbar>
+				<div className={classes.navBtns}>
 					<ValidatorForm onSubmit={handleSubmit}>
 						<TextValidator
 							value={newPaletteName}
@@ -64,13 +66,13 @@ function PaletteFormNav(props) {
 						<Button variant="contained" color="primary" type="submit">
 							Add new Palette
 						</Button>
-						<Link to="/">
-							<Button variant="contained" color="secondary">
-								Go Back
-							</Button>
-						</Link>
 					</ValidatorForm>
-				</Toolbar>
+					<Link to="/">
+						<Button variant="contained" color="secondary">
+							Go Back
+						</Button>
+					</Link>
+				</div>
 			</AppBar>
 		</div>
 	);

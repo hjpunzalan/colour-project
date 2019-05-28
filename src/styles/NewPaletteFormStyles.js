@@ -9,7 +9,9 @@ const useStyles = makeStyles(theme => ({
 		transition: theme.transitions.create(['margin', 'width'], {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.leavingScreen
-		})
+		}),
+		flexDirection: 'row',
+		justifyContent: 'space-between'
 	},
 	appBarShift: {
 		width: `calc(100% - ${drawerWidth}px)`,
@@ -55,7 +57,8 @@ const useStyles = makeStyles(theme => ({
 			duration: theme.transitions.duration.enteringScreen
 		}),
 		marginLeft: 0
-	}
+	},
+	navBtns: {}
 }));
 
 export default useStyles;
