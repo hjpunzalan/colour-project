@@ -15,7 +15,7 @@ import useStyles from './styles/NewPaletteFormStyles';
 import DraggableColorBox from './DraggableColorBox';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
-function NewPaletteForm() {
+function NewPaletteForm(props) {
 	const classes = useStyles();
 	const [open, setOpen] = useState(false);
 	const [currentColor, setCurrentColor] = useState('teal');
@@ -56,6 +56,18 @@ function NewPaletteForm() {
 		setNewName(e.target.value);
 	}
 
+	function handleSubmit() {
+		let name = 'New Palette';
+		const newPalette = {
+			paletteName: name,
+			id: name.replace(/\s+/g, '-').toLowerCase(),
+			emoji: '🏃‍',
+			colors: colors
+		};
+		props.savePalette(newPalette);
+		props.history.push('/');
+	}
+
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -78,6 +90,9 @@ function NewPaletteForm() {
 					<Typography variant="h6" noWrap>
 						Persistent drawer
 					</Typography>
+					<Button variant="contained" color="secondary" onClick={handleSubmit}>
+						SAVE PALETTE
+					</Button>
 				</Toolbar>
 			</AppBar>
 			<Drawer

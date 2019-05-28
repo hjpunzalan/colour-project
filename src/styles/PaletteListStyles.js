@@ -1,6 +1,7 @@
 const styles = {
 	root: {
 		backgroundColor: 'blue',
+		backgroundSize: 'cover',
 		height: '100%',
 		display: 'flex',
 		alignItems: 'flex-start',
@@ -11,8 +12,7 @@ const styles = {
 		height: '100vh',
 		display: 'flex',
 		alignItems: 'flex-start',
-		flexDirection: 'column',
-		overflowY: 'scroll'
+		flexDirection: 'column'
 	},
 	nav: {
 		display: 'flex',
@@ -34,7 +34,6 @@ const styles = {
 		boxSizing: 'border-box',
 		width: '100%',
 		display: 'grid',
-		padding: '0 2rem',
 		gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
 		gridColumnGap: '5%',
 		gridRowGap: '2%'
