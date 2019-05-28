@@ -3,9 +3,7 @@ import chroma from 'chroma-js';
 const styles = {
 	seeMore: {
 		color: props =>
-			chroma(props.background).luminance() >= 0.65
-				? 'rgba(90, 88, 88, 0.822)'
-				: 'white',
+			chroma(props.background).luminance() >= 0.65 ? '#2B2B2B' : 'white',
 		background: 'rgba(255, 255, 255, 0.3)',
 		position: 'absolute',
 		border: 'none',
@@ -51,9 +49,7 @@ const styles = {
 		textTransform: 'uppercase',
 		border: 'none',
 		color: props =>
-			chroma(props.background).luminance() <= 0.2
-				? 'white'
-				: 'rgba(90, 88, 88, 0.822)',
+			chroma(props.background).luminance() <= 0.2 ? 'white' : '#2B2B2B',
 		textDecoration: 'none',
 		opacity: '0'
 	},
@@ -121,15 +117,11 @@ const styles = {
 	},
 	copyText: {
 		color: props =>
-			chroma(props.background).luminance() >= 0.6
-				? 'rgba(90, 88, 88, 0.822)'
-				: 'white'
+			chroma(props.background).luminance() >= 0.6 ? '#2B2B2B' : 'white'
 	},
 	colorName: {
 		color: props =>
-			chroma(props.background).luminance() <= 0.2
-				? 'white'
-				: 'rgba(90, 88, 88, 0.822)'
+			chroma(props.background).luminance() <= 0.2 ? 'white' : '#2B2B2B'
 	}
 };
 
