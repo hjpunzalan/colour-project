@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 		})
 	},
 	menuButton: {
-		marginRight: theme.spacing(2)
+		margin: theme.spacing(2)
 	},
 	hide: {
 		display: 'none'
@@ -32,9 +32,15 @@ const useStyles = makeStyles(theme => ({
 		flexShrink: 0
 	},
 	drawerPaper: {
-		width: drawerWidth
+		width: drawerWidth,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		overflow: 'hidden'
 	},
 	drawerHeader: {
+		alignSelf: 'flex-end',
 		display: 'flex',
 		alignItems: 'center',
 		padding: '0 8px',
@@ -58,7 +64,51 @@ const useStyles = makeStyles(theme => ({
 		}),
 		marginLeft: 0
 	},
-	navBtns: {}
+	navBtns: {},
+	container: {
+		width: '90%',
+		height: '100%',
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	buttons: {
+		width: '100%',
+		marginBottom: '1rem'
+	},
+	button: {
+		width: '50%'
+	},
+	picker: {
+		width: '80% !important',
+		marginTop: '2rem'
+	},
+	pickerContainer: {
+		height: '80%',
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-around',
+		alignItems: 'center'
+	},
+	addColor: {
+		width: '80%',
+		padding: '1rem',
+		margin: '2rem 0',
+		fontSize: '1.2rem'
+	},
+	colorNameInput: {
+		width: '80%',
+		height: '20px',
+		margin: '1rem 0 2rem 0'
+	},
+	formContainer: {
+		width: '100%',
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-around',
+		alignItems: 'center'
+	}
 }));
 
 export default useStyles;

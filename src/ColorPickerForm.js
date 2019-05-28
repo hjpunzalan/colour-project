@@ -11,7 +11,8 @@ export default function ColorPickerForm(props) {
 		currentColor,
 		colors,
 		newColorName,
-		paletteIsFull
+		paletteIsFull,
+		classes
 	} = props;
 
 	useEffect(() => {
@@ -27,13 +28,17 @@ export default function ColorPickerForm(props) {
 	}, [colors, currentColor]);
 
 	return (
-		<div>
+		<div className={classes.pickerContainer}>
 			<SketchPicker
+				className={classes.picker}
 				color={currentColor}
 				onChangeComplete={newColor => updateCurrentColor(newColor)}
 			/>
-			<ValidatorForm onSubmit={addNewColor}>
+			<ValidatorForm className={classes.formContainer} onSubmit={addNewColor}>
 				<TextValidator
+					className={classes.colorNameInput}
+					variant="filled"
+					placeholder="Color Name"
 					value={newColorName}
 					onChange={handleNewColorName}
 					validators={['required', 'isColorNameUnique', 'isColorUnique']}
@@ -44,6 +49,7 @@ export default function ColorPickerForm(props) {
 					]}
 				/>
 				<Button
+					className={classes.addColor}
 					variant="contained"
 					color="primary"
 					style={{
