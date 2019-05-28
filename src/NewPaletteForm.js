@@ -12,8 +12,9 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { SketchPicker } from 'react-color';
 import Button from '@material-ui/core/Button';
 import useStyles from './styles/NewPaletteFormStyles';
-import DraggableColorBox from './DraggableColorBox';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import DraggableColorList from './DraggableColorList';
+import arrayMove from 'array-move';
 
 function NewPaletteForm(props) {
 	const classes = useStyles();
@@ -26,17 +27,17 @@ function NewPaletteForm(props) {
 	useEffect(() => {
 		ValidatorForm.addValidationRule('isColorNameUnique', value => {
 			return colors.every(
-				newColor => newColor.name.toLowerCase() !== value.toLowerCase()
+				color => color.name.toLowerCase() !== value.toLowerCase()
 			);
 		});
 
 		ValidatorForm.addValidationRule('isColorUnique', value => {
-			return colors.every(newColor => newColor.color !== currentColor);
+			return colors.every(c => c.color !== currentColor);
 		});
 
 		ValidatorForm.addValidationRule('isPaletteUnique', value => {
 			return props.palettes.every(
-				palettes => palettes.paletteName.toLowerCase !== value.toLowerCase
+				p => p.paletteName.toLowerCase() !== value.toLowerCase()
 			);
 		});
 	}, [colors, currentColor, props.palettes]);
@@ -80,6 +81,9 @@ function NewPaletteForm(props) {
 
 	function deleteBox(colorName) {
 		setColor(colors.filter(color => color.name !== colorName));
+	}
+	function onSortEnd({ oldIndex, newIndex }) {
+		setColor(arrayMove(colors, oldIndex, newIndex));
 	}
 
 	return (
@@ -176,14 +180,12 @@ function NewPaletteForm(props) {
 				})}
 			>
 				<div className={classes.drawerHeader} />
-				{colors.map(color => (
-					<DraggableColorBox
-						key={color.name}
-						color={color.color}
-						name={color.name}
-						deleteBox={deleteBox}
-					/>
-				))}
+				<DraggableColorList
+					axis="xy"
+					colors={colors}
+					deleteBox={deleteBox}
+					onSortEnd={onSortEnd}
+				/>
 			</main>
 		</div>
 	);
