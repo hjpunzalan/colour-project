@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import Drawer from '@material-ui/core/Drawer';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import Button from '@material-ui/core/Button';
 import arrayMove from 'array-move';
 import PaletteFormNav from './Nav/PaletteFormNav';
 import useStyles from './NewPaletteFormStyles';
 import DraggableColorList from './DraggableColorBox/DraggableColorList';
-import ColorPickerForm from './ColorForm/ColorPickerForm';
+import DrawerForm from './Drawer/DrawerForm';
+import { MAX_COLORS } from '../constants/constants';
+
 NewPaletteForm.defaultProps = {
-	maxColors: 20
+	maxColors: MAX_COLORS
 };
 
 function NewPaletteForm(props) {
@@ -115,56 +111,20 @@ function NewPaletteForm(props) {
 				formEmoji={formEmoji}
 				{...props}
 			/>
-			<Drawer
-				className={classes.drawer}
-				variant="persistent"
-				anchor="left"
+			<DrawerForm
+				handleDrawerClose={handleDrawerClose}
+				clearColors={clearColors}
+				addRandomColor={addRandomColor}
+				paletteIsFull={paletteIsFull}
+				updateCurrentColor={updateCurrentColor}
+				addNewColor={addNewColor}
+				handleNewColorName={handleNewColorName}
+				colors={colors}
+				newColorName={newColorName}
+				currentColor={currentColor}
 				open={open}
-				classes={{
-					paper: classes.drawerPaper
-				}}
-			>
-				<div className={classes.drawerHeader}>
-					<IconButton onClick={handleDrawerClose}>
-						<ChevronLeftIcon />
-					</IconButton>
-				</div>
-				<Divider />
-				<div className={classes.container}>
-					<Typography variant="h4" gutterBottom>
-						Design Your Palette
-					</Typography>
-					<div className={classes.buttons}>
-						<Button
-							className={classes.button}
-							variant="contained"
-							color="secondary"
-							onClick={clearColors}
-						>
-							Clear Palette
-						</Button>
-						<Button
-							className={classes.button}
-							variant="contained"
-							color="primary"
-							onClick={addRandomColor}
-							disabled={paletteIsFull}
-						>
-							Random Colour
-						</Button>
-					</div>
-					<ColorPickerForm
-						updateCurrentColor={updateCurrentColor}
-						addNewColor={addNewColor}
-						handleNewColorName={handleNewColorName}
-						colors={colors}
-						newColorName={newColorName}
-						currentColor={currentColor}
-						paletteIsFull={paletteIsFull}
-						classes={classes}
-					/>
-				</div>
-			</Drawer>
+				classes={classes}
+			/>
 			<main
 				className={clsx(classes.content, {
 					[classes.contentShift]: open
