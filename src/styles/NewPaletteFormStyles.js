@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const drawerWidth = 400;
 const useStyles = makeStyles(theme => ({
 	root: {
-		display: 'flex'
+		display: 'flex',
+		alignItems: 'center'
 	},
 	appBar: {
 		transition: theme.transitions.create(['margin', 'width'], {
@@ -64,7 +65,20 @@ const useStyles = makeStyles(theme => ({
 		}),
 		marginLeft: 0
 	},
-	navBtns: {},
+	navBtns: {
+		marginRight: '1rem',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+
+		'& button': {
+			margin: '0 0.5rem'
+		},
+
+		'& a': {
+			textDecoration: 'none'
+		}
+	},
 	container: {
 		width: '90%',
 		height: '100%',

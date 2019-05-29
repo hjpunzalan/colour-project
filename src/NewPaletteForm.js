@@ -24,6 +24,22 @@ function NewPaletteForm(props) {
 	const [newColorName, setNewColorName] = useState('');
 	const [newPaletteName, setNewPaletteName] = useState('');
 	const paletteIsFull = colors.length >= props.maxColors;
+	const [isFormOpen, setIsFormOpen] = useState(false);
+	// 	handleClickOpen() {
+	// 	this.setState({ open: true });
+	// }
+
+	// handleClose() {
+	// 	this.setState({ open: false });
+	// }
+
+	function formOpen() {
+		setIsFormOpen(true);
+	}
+
+	function formClose() {
+		setIsFormOpen(false);
+	}
 
 	function handleDrawerClose() {
 		setOpen(false);
@@ -37,24 +53,6 @@ function NewPaletteForm(props) {
 		const newColor = { color: currentColor, name: newColorName };
 		setColor([...colors, newColor]);
 		setNewColorName('');
-
-		// function newCurrentColor() {
-		// 	// pick random color from existing palettes
-		// 	const allColors = props.palettes.map(palette => palette.colors).flat();
-		// 	const randomIndex = Math.floor(Math.random() * allColors.length);
-		// 	const randomColor = allColors[randomIndex];
-		// 	if (
-		// 		colors.every(
-		// 			color =>
-		// 				color.name !== randomColor.name && color.color !== randomColor.color
-		// 		)
-		// 	) {
-		// 		setCurrentColor(randomColor.color);
-		// 	} else {
-		// 		newCurrentColor();
-		// 	}
-		// }
-		// newCurrentColor();
 	}
 
 	function handleNewColorName(e) {
@@ -116,6 +114,9 @@ function NewPaletteForm(props) {
 				open={open}
 				newPaletteName={newPaletteName}
 				classes={classes}
+				isFormOpen={isFormOpen}
+				formOpen={formOpen}
+				formClose={formClose}
 				{...props}
 			/>
 			<Drawer

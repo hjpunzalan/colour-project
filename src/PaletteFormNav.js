@@ -17,7 +17,10 @@ function PaletteFormNav(props) {
 		handleNewPaletteName,
 		open,
 		newPaletteName,
-		classes
+		classes,
+		isFormOpen,
+		formOpen,
+		formClose
 	} = props;
 
 	return (
@@ -49,6 +52,9 @@ function PaletteFormNav(props) {
 						handleSubmit={handleSubmit}
 						newPaletteName={newPaletteName}
 						handleNewPaletteName={handleNewPaletteName}
+						isFormOpen={isFormOpen}
+						formClose={formClose}
+						classes={classes}
 						{...props}
 					/>
 					<Link to="/">
@@ -56,6 +62,9 @@ function PaletteFormNav(props) {
 							Go Back
 						</Button>
 					</Link>
+					<Button variant="contained" color="primary" onClick={formOpen}>
+						SAVE
+					</Button>
 				</div>
 			</AppBar>
 		</div>
