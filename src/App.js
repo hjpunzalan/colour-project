@@ -1,11 +1,11 @@
-import Palette from './Palette';
+import Palette from './Palette/Palette';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import seedColors from './seedColors';
+import seedColors from './SeedColors/seedColors';
 import React, { Component } from 'react';
-import generatePalette from './colorHelpers';
-import PaletteList from './PaletteList';
-import SingleColorPalette from './SingleColorPalette';
-import NewPaletteForm from './NewPaletteForm';
+import generatePalette from './SeedColors/colorHelpers';
+import PaletteList from './PaletteList/PaletteList';
+import SingleColorPalette from './Palette/SingleColorPalette/SingleColorPalette';
+import NewPaletteForm from './NewPalette/NewPaletteForm';
 
 export default class App extends Component {
 	constructor(props) {

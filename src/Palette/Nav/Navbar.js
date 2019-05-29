@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 
 import 'rc-slider/assets/index.css';
-import styles from './styles/NavbarStyles';
+import styles from './NavbarStyles';
 
 class Navbar extends Component {
 	constructor(props) {

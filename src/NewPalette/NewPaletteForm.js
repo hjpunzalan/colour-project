@@ -5,13 +5,12 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import PaletteFormNav from './PaletteFormNav';
 import Button from '@material-ui/core/Button';
-import useStyles from './styles/NewPaletteFormStyles';
-import DraggableColorList from './DraggableColorList';
 import arrayMove from 'array-move';
-import ColorPickerForm from './ColorPickerForm';
-
+import PaletteFormNav from './Nav/PaletteFormNav';
+import useStyles from './NewPaletteFormStyles';
+import DraggableColorList from './DraggableColorBox/DraggableColorList';
+import ColorPickerForm from './ColorForm/ColorPickerForm';
 NewPaletteForm.defaultProps = {
 	maxColors: 20
 };
