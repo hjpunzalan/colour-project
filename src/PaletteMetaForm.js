@@ -7,6 +7,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker } from 'emoji-mart';
 
 export class PaletteMetaForm extends Component {
 	componentDidMount() {
@@ -33,7 +35,10 @@ export class PaletteMetaForm extends Component {
 					aria-labelledby="form-dialog-title"
 				>
 					<DialogTitle id="form-dialog-title">
-						Choose a Palette Name
+						Choose a Palette Name{' '}
+						<span role="img" aria-label="emoji palette name">
+							🎨
+						</span>
 					</DialogTitle>
 
 					<ValidatorForm onSubmit={handleSubmit}>
@@ -63,6 +68,7 @@ export class PaletteMetaForm extends Component {
 								Save New Palette
 							</Button>
 						</DialogActions>
+						<Picker set="emojione" />
 					</ValidatorForm>
 				</Dialog>
 			</div>
