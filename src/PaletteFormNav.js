@@ -20,7 +20,8 @@ function PaletteFormNav(props) {
 		classes,
 		isFormOpen,
 		formOpen,
-		formClose
+		formClose,
+		formEmoji
 	} = props;
 
 	return (
@@ -54,6 +55,7 @@ function PaletteFormNav(props) {
 						handleNewPaletteName={handleNewPaletteName}
 						isFormOpen={isFormOpen}
 						formClose={formClose}
+						formEmoji={formEmoji}
 						classes={classes}
 						{...props}
 					/>

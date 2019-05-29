@@ -25,12 +25,24 @@ export class PaletteMetaForm extends Component {
 			newPaletteName,
 			handleNewPaletteName,
 			isFormOpen,
-			formClose
+			formClose,
+			formEmoji
 		} = this.props;
 		return (
 			<div>
+				<Dialog open={isFormOpen === 'emoji'} onClose={formClose}>
+					<DialogTitle id="form-dialog-title">
+						Choose a Palette Emoji
+					</DialogTitle>
+					<Picker
+						title="Pick a palette emoji"
+						emoji="point_up"
+						onSelect={handleSubmit}
+						set="emojione"
+					/>
+				</Dialog>
 				<Dialog
-					open={isFormOpen}
+					open={isFormOpen === 'form'}
 					onClose={formClose}
 					aria-labelledby="form-dialog-title"
 				>
@@ -41,7 +53,7 @@ export class PaletteMetaForm extends Component {
 						</span>
 					</DialogTitle>
 
-					<ValidatorForm onSubmit={handleSubmit}>
+					<ValidatorForm onSubmit={formEmoji}>
 						<DialogContent>
 							<DialogContentText>
 								Please enter a name for the new palette. Make sure that the name
@@ -68,7 +80,6 @@ export class PaletteMetaForm extends Component {
 								Save New Palette
 							</Button>
 						</DialogActions>
-						<Picker set="emojione" />
 					</ValidatorForm>
 				</Dialog>
 			</div>

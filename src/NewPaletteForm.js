@@ -25,16 +25,12 @@ function NewPaletteForm(props) {
 	const [newPaletteName, setNewPaletteName] = useState('');
 	const paletteIsFull = colors.length >= props.maxColors;
 	const [isFormOpen, setIsFormOpen] = useState(false);
-	// 	handleClickOpen() {
-	// 	this.setState({ open: true });
-	// }
-
-	// handleClose() {
-	// 	this.setState({ open: false });
-	// }
-
 	function formOpen() {
-		setIsFormOpen(true);
+		setIsFormOpen('form');
+	}
+
+	function formEmoji() {
+		setIsFormOpen('emoji');
 	}
 
 	function formClose() {
@@ -89,18 +85,18 @@ function NewPaletteForm(props) {
 	function handleDrawerOpen() {
 		setOpen(true);
 	}
-
-	function handleSubmit() {
+	function handleSubmit(emoji) {
 		let name = newPaletteName;
 		const newPalette = {
 			paletteName: name,
 			id: name.replace(/\s+/g, '-').toLowerCase(),
-			emoji: '🏃‍',
+			emoji: emoji.native,
 			colors: colors
 		};
 		props.savePalette(newPalette);
 		props.history.push('/');
 	}
+
 	function handleNewPaletteName(e) {
 		setNewPaletteName(e.target.value);
 	}
@@ -117,6 +113,7 @@ function NewPaletteForm(props) {
 				isFormOpen={isFormOpen}
 				formOpen={formOpen}
 				formClose={formClose}
+				formEmoji={formEmoji}
 				{...props}
 			/>
 			<Drawer
