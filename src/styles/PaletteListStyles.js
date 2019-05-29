@@ -34,7 +34,7 @@ const styles = {
 		boxSizing: 'border-box',
 		width: '100%',
 		display: 'grid',
-		gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+		gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
 		gridColumnGap: '5%',
 		gridRowGap: '2%'
 	},

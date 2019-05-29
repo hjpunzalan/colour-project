@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Link } from 'react-router-dom';
+import PaletteMetaForm from './PaletteMetaForm';
 
 function PaletteFormNav(props) {
 	const {
@@ -20,13 +20,6 @@ function PaletteFormNav(props) {
 		classes
 	} = props;
 
-	useEffect(() => {
-		ValidatorForm.addValidationRule('isPaletteUnique', value => {
-			return props.palettes.every(
-				p => p.paletteName.toLowerCase() !== value.toLowerCase()
-			);
-		});
-	}, [props.palettes]);
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -52,21 +45,12 @@ function PaletteFormNav(props) {
 					</Typography>
 				</Toolbar>
 				<div className={classes.navBtns}>
-					<ValidatorForm onSubmit={handleSubmit}>
-						<TextValidator
-							value={newPaletteName}
-							label="Palette Name"
-							onChange={handleNewPaletteName}
-							validators={['required', 'isPaletteUnique']}
-							errorMessages={[
-								'Palette name must be entered',
-								'Palette Name must be unique'
-							]}
-						/>
-						<Button variant="contained" color="primary" type="submit">
-							Add new Palette
-						</Button>
-					</ValidatorForm>
+					<PaletteMetaForm
+						handleSubmit={handleSubmit}
+						newPaletteName={newPaletteName}
+						handleNewPaletteName={handleNewPaletteName}
+						{...props}
+					/>
 					<Link to="/">
 						<Button variant="contained" color="secondary">
 							Go Back
