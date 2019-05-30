@@ -1,21 +1,7 @@
 import chroma from 'chroma-js';
+import sizes from '../../sizes';
 
 const styles = {
-	seeMore: {
-		color: props =>
-			chroma(props.background).luminance() >= 0.65 ? '#2B2B2B' : 'white',
-		background: 'rgba(255, 255, 255, 0.3)',
-		position: 'absolute',
-		border: 'none',
-		right: '0px',
-		bottom: '0px',
-		width: '60px',
-		height: '30px',
-		textAlign: 'center',
-		lineHeight: '30px',
-		textTransform: 'uppercase'
-	},
-
 	ColorBox: {
 		width: '20%',
 		height: props => (props.showingFullPalette ? '25%' : '50%'),
@@ -26,9 +12,19 @@ const styles = {
 		cursor: 'pointer',
 
 		'&:hover button': {
-			opacity: '1',
-			transition: 'all.5s',
-			cursor: 'pointer'
+			opacity: '1'
+		},
+		[sizes.down('lg')]: {
+			width: '25%',
+			height: props => (props.showingFullPalette ? '20' : '50%')
+		},
+		[sizes.down('md')]: {
+			width: '50%',
+			height: props => (props.showingFullPalette ? '10%' : '50%')
+		},
+		[sizes.down('xs')]: {
+			width: '100%',
+			height: props => (props.showingFullPalette ? '5%' : '10%')
 		}
 	},
 
@@ -52,6 +48,20 @@ const styles = {
 			chroma(props.background).luminance() <= 0.2 ? 'white' : '#2B2B2B',
 		textDecoration: 'none',
 		opacity: '0'
+	},
+	seeMore: {
+		color: props =>
+			chroma(props.background).luminance() >= 0.65 ? '#2B2B2B' : 'white',
+		background: 'rgba(255, 255, 255, 0.3)',
+		position: 'absolute',
+		border: 'none',
+		right: '0px',
+		bottom: '0px',
+		width: '60px',
+		height: '30px',
+		textAlign: 'center',
+		lineHeight: '30px',
+		textTransform: 'uppercase'
 	},
 
 	boxContent: {

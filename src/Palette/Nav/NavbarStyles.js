@@ -1,9 +1,11 @@
+import sizes from '../../sizes';
+
 const styles = {
 	Navbar: {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'flex-start',
-		height: '6vh'
+		height: '5vh'
 	},
 
 	logo: {
@@ -18,6 +20,9 @@ const styles = {
 		'& a': {
 			textDecoration: 'none',
 			color: 'black'
+		},
+		[sizes.down('sm')]: {
+			fontSize: '20px'
 		}
 	},
 	slider: {

@@ -14,6 +14,9 @@ const styles = {
 	},
 	colors: {
 		backgroundColor: '#dae1e4',
+		display: 'grid',
+		gridTemplateColumns: 'repeat(5,1fr)',
+		gridTemplateRows: 'repeat(4,1fr)',
 		height: '10rem',
 		width: '100%',
 		borderRadius: '5px',
@@ -34,12 +37,11 @@ const styles = {
 		fontSize: '1.5rem'
 	},
 	miniColor: {
-		width: '20%',
-		height: '25%',
+		width: '100%',
 		display: 'inline-block',
 		margin: '0 auto',
 		position: 'relative',
-		marginBottom: '-4px'
+		marginBottom: '0'
 	},
 	delete: {},
 	deleteIcon: {

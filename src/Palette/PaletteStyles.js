@@ -1,14 +1,13 @@
 const styles = {
 	Palette: {
 		height: '100vh',
-		overflow: 'hidden',
 		display: 'flex',
 		flexDirection: 'column',
-		justifyContent: 'space-around'
+		overflowX: 'hidden'
 	},
 
 	PaletteColors: {
-		height: '84%'
+		height: '90%'
 	},
 	goBack: {
 		backgroundColor: 'black',
