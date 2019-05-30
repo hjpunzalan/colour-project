@@ -18,15 +18,7 @@ function NewPaletteForm(props) {
 	const classes = useStyles();
 	const [open, setOpen] = useState(false);
 	const [currentColor, setCurrentColor] = useState('teal');
-	const [colors, setColor] = useState(
-		props.palettes.length === 0
-			? [
-					{ name: 'red', color: '#F44336' },
-					{ name: 'pink', color: '#E91E63' },
-					{ name: 'purple', color: '#9C27B0' }
-			  ]
-			: props.palettes[0].colors
-	);
+	const [colors, setColor] = useState(seedColors[0].colors);
 	const [newColorName, setNewColorName] = useState('');
 	const [newPaletteName, setNewPaletteName] = useState('');
 	const paletteIsFull = colors.length >= props.maxColors;

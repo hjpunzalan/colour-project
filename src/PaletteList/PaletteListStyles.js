@@ -28,7 +28,7 @@ export default {
 		alignItems: 'flex-start',
 		flexDirection: 'column',
 		[sizes.down('xs')]: {
-			width: '90%'
+			width: '100%'
 		}
 	},
 	nav: {
@@ -63,7 +63,10 @@ export default {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
 		gridColumnGap: '5%',
-		gridRowGap: '2%'
+		gridRowGap: '2%',
+		[sizes.down('xs')]: {
+			width: '90%'
+		}
 	},
 	logo: {
 		fontFamily: 'Pacifico, cursive',
