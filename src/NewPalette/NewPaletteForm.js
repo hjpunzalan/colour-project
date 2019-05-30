@@ -98,7 +98,8 @@ function NewPaletteForm(props) {
 			colors: colors
 		};
 		props.savePalette(newPalette);
-		props.history.push('/');
+		formClose();
+		props.history.push('/colour-project');
 	}
 
 	function handleNewPaletteName(e) {

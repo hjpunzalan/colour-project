@@ -59,7 +59,7 @@ function PaletteFormNav(props) {
 						classes={classes}
 						{...props}
 					/>
-					<Link to="/">
+					<Link to="/colour-project">
 						<Button variant="contained" color="secondary">
 							Go Back
 						</Button>
