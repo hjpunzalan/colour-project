@@ -42,7 +42,10 @@ const styles = {
 		textTransform: 'uppercase',
 		fontSize: '12px',
 		display: 'flex',
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
+		[sizes.down('xs')]: {
+			padding: '0'
+		}
 	},
 	deleteIcon: {
 		color: '#2B2B2B',
@@ -60,7 +63,7 @@ const DraggableColorBox = SortableElement(props => {
 	return (
 		<div style={{ backgroundColor: color }} className={classes.root}>
 			<div className={classes.boxContent}>
-				<span>{name}</span>{' '}
+				<span>{name}</span>
 				<DeleteIcon className={classes.deleteIcon} onClick={handleClick} />
 			</div>
 		</div>
