@@ -12,10 +12,13 @@ export default class App extends Component {
 		super(props);
 		const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'));
 		this.state = {
-			palettes: savedPalettes || seedColors
+			palettes: savedPalettes || seedColors,
+			open: false
 		};
 		this.findPalette = this.findPalette.bind(this);
 		this.deletePalette = this.deletePalette.bind(this);
+		this.openDialog = this.openDialog.bind(this);
+		this.closeDialog = this.closeDialog.bind(this);
 	}
 	deletePalette(id) {
 		const deletedPalette = this.state.palettes.filter(p => p.id !== id);
@@ -41,6 +44,13 @@ export default class App extends Component {
 			JSON.stringify(this.state.palettes)
 		);
 	}
+	openDialog() {
+		this.setState({ open: true });
+	}
+
+	closeDialog() {
+		this.setState({ open: false });
+	}
 
 	render() {
 		return (
@@ -52,6 +62,9 @@ export default class App extends Component {
 						<PaletteList
 							deletePalette={this.deletePalette}
 							palettes={this.state.palettes}
+							open={this.state.open}
+							openDialog={this.openDialog}
+							closeDialog={this.closeDialog}
 							{...routeProps}
 						/>
 					)}
