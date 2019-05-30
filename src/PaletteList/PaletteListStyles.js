@@ -1,19 +1,25 @@
 import sizes from '../sizes';
+import bg from '../bg.svg';
 const styles = {
 	root: {
-		backgroundColor: 'blue',
-		backgroundSize: 'cover',
-		height: '100%',
-		display: 'flex',
-		alignItems: 'flex-start',
-		justifyContent: 'center'
-	},
-	container: {
-		width: '90%',
+		backgroundColor: '#3915bb',
+		backgroundImage: `url(${bg})`,
 		height: '100vh',
 		display: 'flex',
 		alignItems: 'flex-start',
-		flexDirection: 'column'
+		justifyContent: 'center',
+		overflow: 'scroll'
+		// /* background by SVGBackgrounds.com */
+	},
+	container: {
+		width: '50%',
+		height: '100%',
+		display: 'flex',
+		alignItems: 'flex-start',
+		flexDirection: 'column',
+		[sizes.down('xs')]: {
+			width: '90%'
+		}
 	},
 	nav: {
 		display: 'flex',
