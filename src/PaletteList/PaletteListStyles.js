@@ -1,3 +1,4 @@
+import sizes from '../sizes';
 const styles = {
 	root: {
 		backgroundColor: 'blue',
@@ -8,7 +9,7 @@ const styles = {
 		justifyContent: 'center'
 	},
 	container: {
-		width: '60%',
+		width: '90%',
 		height: '100vh',
 		display: 'flex',
 		alignItems: 'flex-start',
@@ -16,6 +17,9 @@ const styles = {
 	},
 	nav: {
 		display: 'flex',
+		[sizes.down('xs')]: {
+			flexDirection: 'column'
+		},
 		width: '100%',
 		justifyContent: 'space-between',
 		color: 'white',
@@ -27,7 +31,14 @@ const styles = {
 		},
 
 		'& a': {
-			color: 'white'
+			color: 'white',
+			[sizes.down('xs')]: {
+				fontSize: '1rem',
+				textDecoration: 'none',
+				backgroundColor: '#e01b5c',
+				padding: '.5rem',
+				borderRadius: '2px'
+			}
 		}
 	},
 	palettes: {
@@ -41,7 +52,17 @@ const styles = {
 	logo: {
 		fontFamily: 'Pacifico, cursive',
 		fontWeight: '200',
-		fontSize: '2rem'
+		fontSize: '2rem',
+
+		[sizes.down('xs')]: {
+			fontSize: '3rem',
+			display: 'initial'
+		}
+	},
+	label: {
+		[sizes.down('xs')]: {
+			display: 'none'
+		}
 	}
 };
 

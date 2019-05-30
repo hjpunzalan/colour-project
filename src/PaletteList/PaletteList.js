@@ -16,8 +16,8 @@ class PaletteList extends Component {
 				<div className={classes.container}>
 					<nav className={classes.nav}>
 						<h1>
-							<span className={classes.logo}>Color Picker</span> &mdash; with
-							React
+							<span className={classes.logo}>Color Picker</span>{' '}
+							<span className={classes.label}>&mdash; with React</span>
 						</h1>
 						<Link to="/colour-project/palette/new">Create Palette</Link>
 					</nav>
