@@ -1,6 +1,16 @@
 import sizes from '../sizes';
 import bg from '../bg.svg';
-const styles = {
+export default {
+	'@global': {
+		'.palette-exit': {
+			opacity: 1
+		},
+
+		'.palette-exit-active': {
+			opacity: 0,
+			transition: 'opacity 500ms ease-in'
+		}
+	},
 	root: {
 		backgroundColor: '#3915bb',
 		backgroundImage: `url(${bg})`,
@@ -23,15 +33,15 @@ const styles = {
 	},
 	nav: {
 		display: 'flex',
-		[sizes.down('xs')]: {
-			flexDirection: 'column'
-		},
 		width: '100%',
 		justifyContent: 'space-between',
 		color: 'white',
 		alignItems: 'center',
 		margin: '1rem 0',
 
+		[sizes.down('xs')]: {
+			flexDirection: 'column'
+		},
 		'& h1': {
 			fontSize: '1rem'
 		},
@@ -71,5 +81,3 @@ const styles = {
 		}
 	}
 };
-
-export default styles;

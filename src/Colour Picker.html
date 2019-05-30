@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://localhost:3000/colour-project -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:3000/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:3000/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:3000/favicon-16x16.png">
+  <link rel="manifest" href="http://localhost:3000/site.webmanifest">
+  <link rel="mask-icon" href="http://localhost:3000/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="Description" content="Colour Picker App where you can customise your own palette">
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <link rel="manifest" href="http://localhost:3000/manifest.json">
+  <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>Colour Picker</title>
+<style type="text/css">@import url(https://fonts.googleapis.com/css?family=Pacifico&display=swap);</style><style type="text/css">body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 100%;
+}</style><style type="text/css">.rc-slider {
+  position: relative;
+  height: 14px;
+  padding: 5px 0;
+  width: 100%;
+  border-radius: 6px;
+  touch-action: none;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.rc-slider * {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.rc-slider-rail {
+  position: absolute;
+  width: 100%;
+  background-color: #e9e9e9;
+  height: 4px;
+  border-radius: 6px;
+}
+.rc-slider-track {
+  position: absolute;
+  left: 0;
+  height: 4px;
+  border-radius: 6px;
+  background-color: #abe2fb;
+}
+.rc-slider-handle {
+  position: absolute;
+  margin-left: -7px;
+  margin-top: -5px;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  cursor: grab;
+  border-radius: 50%;
+  border: solid 2px #96dbfa;
+  background-color: #fff;
+  touch-action: pan-x;
+}
+.rc-slider-handle:focus {
+  border-color: #57c5f7;
+  box-shadow: 0 0 0 5px #96dbfa;
+  outline: none;
+}
+.rc-slider-handle-click-focused:focus {
+  border-color: #96dbfa;
+  box-shadow: unset;
+}
+.rc-slider-handle:hover {
+  border-color: #57c5f7;
+}
+.rc-slider-handle:active {
+  border-color: #57c5f7;
+  box-shadow: 0 0 5px #57c5f7;
+  cursor: grabbing;
+}
+.rc-slider-mark {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+}
+.rc-slider-mark-text {
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  color: #999;
+}
+.rc-slider-mark-text-active {
+  color: #666;
+}
+.rc-slider-step {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+}
+.rc-slider-dot {
+  position: absolute;
+  bottom: -2px;
+  margin-left: -4px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #e9e9e9;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.rc-slider-dot-active {
+  border-color: #96dbfa;
+}
+.rc-slider-disabled {
+  background-color: #e9e9e9;
+}
+.rc-slider-disabled .rc-slider-track {
+  background-color: #ccc;
+}
+.rc-slider-disabled .rc-slider-handle,
+.rc-slider-disabled .rc-slider-dot {
+  border-color: #ccc;
+  box-shadow: none;
+  background-color: #fff;
+  cursor: not-allowed;
+}
+.rc-slider-disabled .rc-slider-mark-text,
+.rc-slider-disabled .rc-slider-dot {
+  cursor: not-allowed !important;
+}
+.rc-slider-vertical {
+  width: 14px;
+  height: 100%;
+  padding: 0 5px;
+}
+.rc-slider-vertical .rc-slider-rail {
+  height: 100%;
+  width: 4px;
+}
+.rc-slider-vertical .rc-slider-track {
+  left: 5px;
+  bottom: 0;
+  width: 4px;
+}
+.rc-slider-vertical .rc-slider-handle {
+  margin-left: -5px;
+  margin-bottom: -7px;
+  touch-action: pan-y;
+}
+.rc-slider-vertical .rc-slider-mark {
+  top: 0;
+  left: 18px;
+  height: 100%;
+}
+.rc-slider-vertical .rc-slider-step {
+  height: 100%;
+  width: 4px;
+}
+.rc-slider-vertical .rc-slider-dot {
+  left: 2px;
+  margin-bottom: -4px;
+}
+.rc-slider-vertical .rc-slider-dot:first-child {
+  margin-bottom: -4px;
+}
+.rc-slider-vertical .rc-slider-dot:last-child {
+  margin-bottom: -4px;
+}
+.rc-slider-tooltip-zoom-down-enter,
+.rc-slider-tooltip-zoom-down-appear {
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  display: block !important;
+  animation-play-state: paused;
+}
+.rc-slider-tooltip-zoom-down-leave {
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  display: block !important;
+  animation-play-state: paused;
+}
+.rc-slider-tooltip-zoom-down-enter.rc-slider-tooltip-zoom-down-enter-active,
+.rc-slider-tooltip-zoom-down-appear.rc-slider-tooltip-zoom-down-appear-active {
+  animation-name: rcSliderTooltipZoomDownIn;
+  animation-play-state: running;
+}
+.rc-slider-tooltip-zoom-down-leave.rc-slider-tooltip-zoom-down-leave-active {
+  animation-name: rcSliderTooltipZoomDownOut;
+  animation-play-state: running;
+}
+.rc-slider-tooltip-zoom-down-enter,
+.rc-slider-tooltip-zoom-down-appear {
+  transform: scale(0, 0);
+  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+.rc-slider-tooltip-zoom-down-leave {
+  animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+}
+@keyframes rcSliderTooltipZoomDownIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 100%;
+    transform: scale(0, 0);
+  }
+  100% {
+    transform-origin: 50% 100%;
+    transform: scale(1, 1);
+  }
+}
+@keyframes rcSliderTooltipZoomDownOut {
+  0% {
+    transform-origin: 50% 100%;
+    transform: scale(1, 1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 100%;
+    transform: scale(0, 0);
+  }
+}
+.rc-slider-tooltip {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  visibility: visible;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.rc-slider-tooltip * {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.rc-slider-tooltip-hidden {
+  display: none;
+}
+.rc-slider-tooltip-placement-top {
+  padding: 4px 0 8px 0;
+}
+.rc-slider-tooltip-inner {
+  padding: 6px 2px;
+  min-width: 24px;
+  height: 24px;
+  font-size: 12px;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #6c6c6c;
+  border-radius: 6px;
+  box-shadow: 0 0 4px #d9d9d9;
+}
+.rc-slider-tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.rc-slider-tooltip-placement-top .rc-slider-tooltip-arrow {
+  bottom: 4px;
+  left: 50%;
+  margin-left: -4px;
+  border-width: 4px 4px 0;
+  border-top-color: #6c6c6c;
+}
+</style><style type="text/css">.emoji-mart,
+.emoji-mart * {
+  box-sizing: border-box;
+  line-height: 1.15;
+}
+
+.emoji-mart {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  display: inline-block;
+  color: #222427;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.emoji-mart .emoji-mart-emoji {
+  padding: 6px;
+}
+
+.emoji-mart-bar {
+  border: 0 solid #d9d9d9;
+}
+.emoji-mart-bar:first-child {
+  border-bottom-width: 1px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.emoji-mart-bar:last-child {
+  border-top-width: 1px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.emoji-mart-anchors {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 6px;
+  color: #858585;
+  line-height: 0;
+}
+
+.emoji-mart-anchor {
+  position: relative;
+  display: block;
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 12px 4px;
+  overflow: hidden;
+  transition: color .1s ease-out;
+  margin: 0;
+  box-shadow: none;
+  background: none;
+  border: none;
+}
+.emoji-mart-anchor:hover,
+.emoji-mart-anchor-selected {
+  color: #464646;
+}
+
+.emoji-mart-anchor-selected .emoji-mart-anchor-bar {
+  bottom: 0;
+}
+
+.emoji-mart-anchor-bar {
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 100%; height: 3px;
+  background-color: #464646;
+}
+
+.emoji-mart-anchors i {
+  display: inline-block;
+  width: 100%;
+  max-width: 22px;
+}
+
+.emoji-mart-anchors svg,
+.emoji-mart-anchors img {
+  fill: #858585;
+  height: 18px;
+  width: 18px;
+}
+
+.emoji-mart-scroll {
+  overflow-y: scroll;
+  height: 270px;
+  padding: 0 6px 6px 6px;
+  will-change: transform; /* avoids "repaints on scroll" in mobile Chrome */
+}
+
+.emoji-mart-search {
+  margin-top: 6px;
+  padding: 0 6px;
+  position: relative;
+}
+
+.emoji-mart-search input {
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  padding: 5px 25px 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  outline: 0;
+}
+
+.emoji-mart-search input,
+.emoji-mart-search input::-webkit-search-decoration,
+.emoji-mart-search input::-webkit-search-cancel-button,
+.emoji-mart-search input::-webkit-search-results-button,
+.emoji-mart-search input::-webkit-search-results-decoration {
+  /* remove webkit/blink styles for <input type="search">
+   * via https://stackoverflow.com/a/9422689 */
+  -webkit-appearance: none;
+}
+
+.emoji-mart-search-icon {
+  position: absolute;
+  top: 7px;
+  right: 11px;
+  z-index: 2;
+  padding: 2px 5px 1px;
+  border: none;
+  background: none;
+}
+
+.emoji-mart-category .emoji-mart-emoji span {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  cursor: default;
+}
+
+.emoji-mart-category .emoji-mart-emoji:hover:before {
+  z-index: 0;
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: #f4f4f4;
+  border-radius: 100%;
+}
+
+.emoji-mart-category-label {
+  z-index: 2;
+  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.emoji-mart-category-label span {
+  display: block;
+  width: 100%;
+  font-weight: 500;
+  padding: 5px 6px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, .95);
+}
+
+.emoji-mart-category-list {
+  margin: 0;
+  padding: 0;
+}
+
+.emoji-mart-category-list li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.emoji-mart-emoji {
+  position: relative;
+  display: inline-block;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.emoji-mart-emoji-native {
+  font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "EmojiOne Color", "Android Emoji";
+}
+
+.emoji-mart-no-results {
+  font-size: 14px;
+  text-align: center;
+  padding-top: 70px;
+  color: #858585;
+}
+.emoji-mart-no-results-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.emoji-mart-no-results .emoji-mart-category-label {
+  display: none;
+}
+.emoji-mart-no-results .emoji-mart-no-results-label {
+  margin-top: .2em;
+}
+.emoji-mart-no-results .emoji-mart-emoji:hover:before {
+  content: none;
+}
+
+.emoji-mart-preview {
+  position: relative;
+  height: 70px;
+}
+
+.emoji-mart-preview-emoji,
+.emoji-mart-preview-data,
+.emoji-mart-preview-skins {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.emoji-mart-preview-emoji {
+  left: 12px;
+}
+
+.emoji-mart-preview-data {
+  left: 68px; right: 12px;
+  word-break: break-all;
+}
+
+.emoji-mart-preview-skins {
+  right: 30px;
+  text-align: right;
+}
+
+.emoji-mart-preview-skins.custom {
+  right: 10px;
+  text-align: right;
+}
+
+.emoji-mart-preview-name {
+  font-size: 14px;
+}
+
+.emoji-mart-preview-shortname {
+  font-size: 12px;
+  color: #888;
+}
+.emoji-mart-preview-shortname + .emoji-mart-preview-shortname,
+.emoji-mart-preview-shortname + .emoji-mart-preview-emoticon,
+.emoji-mart-preview-emoticon + .emoji-mart-preview-emoticon {
+  margin-left: .5em;
+}
+
+.emoji-mart-preview-emoticon {
+  font-size: 11px;
+  color: #bbb;
+}
+
+.emoji-mart-title span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.emoji-mart-title .emoji-mart-emoji {
+  padding: 0;
+}
+
+.emoji-mart-title-label {
+  color: #999A9C;
+  font-size: 26px;
+  font-weight: 300;
+}
+
+.emoji-mart-skin-swatches {
+  font-size: 0;
+  padding: 2px 0;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.emoji-mart-skin-swatches.custom {
+  font-size: 0;
+  border: none;
+  background-color: #fff;
+}
+
+.emoji-mart-skin-swatches.opened .emoji-mart-skin-swatch {
+  width: 16px;
+  padding: 0 2px;
+}
+
+.emoji-mart-skin-swatches.opened .emoji-mart-skin-swatch.selected:after {
+  opacity: .75;
+}
+
+.emoji-mart-skin-swatch {
+  display: inline-block;
+  width: 0;
+  vertical-align: middle;
+  transition-property: width, padding;
+  transition-duration: .125s;
+  transition-timing-function: ease-out;
+}
+
+.emoji-mart-skin-swatch:nth-child(1) { transition-delay: 0s }
+.emoji-mart-skin-swatch:nth-child(2) { transition-delay: .03s }
+.emoji-mart-skin-swatch:nth-child(3) { transition-delay: .06s }
+.emoji-mart-skin-swatch:nth-child(4) { transition-delay: .09s }
+.emoji-mart-skin-swatch:nth-child(5) { transition-delay: .12s }
+.emoji-mart-skin-swatch:nth-child(6) { transition-delay: .15s }
+
+.emoji-mart-skin-swatch.selected {
+  position: relative;
+  width: 16px;
+  padding: 0 2px;
+}
+
+.emoji-mart-skin-swatch.selected:after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 4px; height: 4px;
+  margin: -2px 0 0 -2px;
+  background-color: #fff;
+  border-radius: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+
+.emoji-mart-skin-swatch.custom {
+  display: inline-block;
+  width: 0;
+  height: 38px;
+  overflow: hidden;
+  vertical-align: middle;
+  transition-property: width, height;
+  transition-duration: .125s;
+  transition-timing-function: ease-out;
+  cursor: default;
+}
+
+.emoji-mart-skin-swatch.custom.selected {
+  position: relative;
+  width: 36px;
+  height: 38px;
+  padding: 0 2px 0 0;
+}
+
+.emoji-mart-skin-swatch.custom.selected:after {
+  content: "";
+  width: 0;
+  height: 0;
+}
+
+.emoji-mart-skin-swatches.custom .emoji-mart-skin-swatch.custom:hover {
+  background-color: #f4f4f4;
+  border-radius: 10%;
+}
+
+.emoji-mart-skin-swatches.custom.opened .emoji-mart-skin-swatch.custom {
+  width: 36px;
+  height: 38px;
+  padding: 0 2px 0 0;
+}
+
+.emoji-mart-skin-swatches.custom.opened .emoji-mart-skin-swatch.custom.selected:after {
+  opacity: .75;
+}
+
+.emoji-mart-skin-text.opened {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  color: #888;
+  font-size: 11px;
+  padding: 5px 2px;
+  width: 95px;
+  height: 40px;
+  border-radius: 10%;
+  background-color: #fff;
+}
+
+.emoji-mart-skin {
+  display: inline-block;
+  width: 100%;
+  padding-top: 100%;
+  max-width: 12px;
+  border-radius: 100%;
+}
+
+.emoji-mart-skin-tone-1 { background-color: #ffc93a }
+.emoji-mart-skin-tone-2 { background-color: #fadcbc }
+.emoji-mart-skin-tone-3 { background-color: #e0bb95 }
+.emoji-mart-skin-tone-4 { background-color: #bf8f68 }
+.emoji-mart-skin-tone-5 { background-color: #9b643d }
+.emoji-mart-skin-tone-6 { background-color: #594539 }
+
+/* For screenreaders only, via https://stackoverflow.com/a/19758620 */
+.emoji-mart-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+
+</style><style data-jss="" data-meta="MuiSvgIcon">
+.MuiSvgIcon-root {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  user-select: none;
+  flex-shrink: 0;
+}
+.MuiSvgIcon-colorPrimary {
+  color: #3f51b5;
+}
+.MuiSvgIcon-colorSecondary {
+  color: #f50057;
+}
+.MuiSvgIcon-colorAction {
+  color: rgba(0, 0, 0, 0.54);
+}
+.MuiSvgIcon-colorError {
+  color: #f44336;
+}
+.MuiSvgIcon-colorDisabled {
+  color: rgba(0, 0, 0, 0.26);
+}
+.MuiSvgIcon-fontSizeInherit {
+  font-size: inherit;
+}
+.MuiSvgIcon-fontSizeSmall {
+  font-size: 1.25rem;
+}
+.MuiSvgIcon-fontSizeLarge {
+  font-size: 2.1875rem;
+}
+</style><style data-jss="" data-meta="MiniPalette">
+.MiniPalette-root-7 {
+  border: 1px solid  black;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: white;
+}
+.MiniPalette-root-7:hover svg {
+  opacity: 1;
+}
+.MiniPalette-colors-8 {
+  width: 100%;
+  height: 10rem;
+  display: grid;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #dae1e4;
+  grid-template-rows: repeat(4,1fr);
+  grid-template-columns: repeat(5,1fr);
+}
+.MiniPalette-title-9 {
+  color: #000;
+  margin: 0;
+  display: flex;
+  position: relative;
+  font-size: 1rem;
+  align-items: center;
+  padding-top: 0.5rem;
+  justify-content: space-between;
+}
+.MiniPalette-emoji-10 {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+}
+.MiniPalette-miniColor-11 {
+  width: 100%;
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 0;
+}
+.MiniPalette-deleteIcon-13 {
+  top: 0px;
+  color: white;
+  width: 40px;
+  right: 0px;
+  height: 40px;
+  padding: 10px;
+  z-index: 10;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.3s;
+  background-color: #eb3d30;
+}
+</style><style data-jss="" data-meta="PaletteList">
+.PaletteList-root-1 {
+  height: 100vh;
+  display: flex;
+  overflow: scroll;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #3915bb;
+  background-image: url(/static/media/bg.b595ad80.svg);
+}
+.PaletteList-container-2 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+@media only screen and (max-width: 576px) {
+  .PaletteList-container-2 {
+    width: 90%;
+  }
+}
+.PaletteList-nav-3 {
+  width: 100%;
+  color: white;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 576px) {
+  .PaletteList-nav-3 {
+    flex-direction: column;
+  }
+}
+.PaletteList-nav-3 h1 {
+  font-size: 1rem;
+}
+.PaletteList-nav-3 a {
+  color: white;
+}
+@media only screen and (max-width: 576px) {
+  .PaletteList-nav-3 a {
+    padding: .5rem;
+    font-size: 1rem;
+    border-radius: 2px;
+    text-decoration: none;
+    background-color: #e01b5c;
+  }
+}
+.PaletteList-palettes-4 {
+  width: 100%;
+  display: grid;
+  box-sizing: border-box;
+  grid-row-gap: 2%;
+  grid-column-gap: 5%;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.PaletteList-logo-5 {
+  font-size: 2rem;
+  font-family: Pacifico, cursive;
+  font-weight: 200;
+}
+@media only screen and (max-width: 576px) {
+  .PaletteList-logo-5 {
+    display: initial;
+    font-size: 3rem;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .PaletteList-label-6 {
+    display: none;
+  }
+}
+</style></head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"><div class="PaletteList-root-1"><div class="PaletteList-container-2"><nav class="PaletteList-nav-3"><h1><span class="PaletteList-logo-5">Color Picker</span> <span class="PaletteList-label-6">— with React</span></h1><a href="http://localhost:3000/colour-project/palette/new">Create Palette</a></nav><div class="PaletteList-palettes-4"><div class="MiniPalette-root-7"><div class="MiniPalette-delete-12"><svg class="MuiSvgIcon-root MiniPalette-deleteIcon-13" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg></div><div class="MiniPalette-colors-8"><div class="MiniPalette-miniColor-11" style="background-color: rgb(244, 67, 54);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(233, 30, 99);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(156, 39, 176);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(103, 58, 183);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(63, 81, 181);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(33, 150, 243);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(3, 169, 244);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(0, 188, 212);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(0, 150, 136);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(76, 175, 80);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(139, 195, 74);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(205, 220, 57);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(255, 235, 59);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(255, 193, 7);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(255, 152, 0);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(255, 87, 34);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(121, 85, 72);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(158, 158, 158);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(96, 125, 139);"></div></div><h5 class="MiniPalette-title-9">Material UI Colors <span class="MiniPalette-emoji-10">🎨</span></h5></div><div class="MiniPalette-root-7"><div class="MiniPalette-delete-12"><svg class="MuiSvgIcon-root MiniPalette-deleteIcon-13" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg></div><div class="MiniPalette-colors-8"><div class="MiniPalette-miniColor-11" style="background-color: rgb(255, 195, 18);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(196, 229, 56);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(18, 203, 196);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(253, 167, 223);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(237, 76, 103);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(247, 159, 31);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(163, 203, 56);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(18, 137, 167);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(217, 128, 250);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(181, 52, 113);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(238, 90, 36);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(0, 148, 50);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(6, 82, 221);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(153, 128, 250);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(131, 52, 113);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(234, 32, 39);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(0, 98, 102);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(27, 20, 100);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(87, 88, 187);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(111, 30, 81);"></div></div><h5 class="MiniPalette-title-9">Flat UI Colors Dutch <span class="MiniPalette-emoji-10">👱‍</span></h5></div><div class="MiniPalette-root-7"><div class="MiniPalette-delete-12"><svg class="MuiSvgIcon-root MiniPalette-deleteIcon-13" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg></div><div class="MiniPalette-colors-8"><div class="MiniPalette-miniColor-11" style="background-color: rgb(85, 239, 196);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(129, 236, 236);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(116, 185, 255);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(162, 155, 254);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(223, 230, 233);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(0, 184, 148);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(0, 206, 201);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(9, 132, 227);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(108, 92, 231);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(178, 190, 195);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(255, 234, 167);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(250, 177, 160);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(255, 118, 117);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(253, 121, 168);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(99, 110, 114);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(253, 203, 110);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(225, 112, 85);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(214, 48, 49);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(232, 67, 147);"></div><div class="MiniPalette-miniColor-11" style="background-color: rgb(45, 52, 54);"></div></div><h5 class="MiniPalette-title-9">Flat UI Colors American <span class="MiniPalette-emoji-10">🏃‍</span></h5></div></div></div></div></div>
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+<script src="./Colour Picker_files/bundle.js"></script><script src="./Colour Picker_files/1.chunk.js"></script><script src="./Colour Picker_files/main.chunk.js"></script><script src="./Colour Picker_files/main.d8c7fe852da70f1753d3.hot-update.js"></script>
+
+</body></html>
