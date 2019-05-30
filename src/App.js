@@ -1,11 +1,13 @@
+import React, { Component } from 'react';
+import './App.css';
 import Palette from './Palette/Palette';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import seedColors from './SeedColors/seedColors';
-import React, { Component } from 'react';
 import generatePalette from './SeedColors/colorHelpers';
 import PaletteList from './PaletteList/PaletteList';
 import SingleColorPalette from './Palette/SingleColorPalette/SingleColorPalette';
 import NewPaletteForm from './NewPalette/NewPaletteForm';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 export default class App extends Component {
 	constructor(props) {
@@ -54,57 +56,70 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<Switch>
-				<Route
-					exact
-					path="/colour-project"
-					render={routeProps => (
-						<PaletteList
-							deletePalette={this.deletePalette}
-							palettes={this.state.palettes}
-							open={this.state.open}
-							openDialog={this.openDialog}
-							closeDialog={this.closeDialog}
-							{...routeProps}
-						/>
-					)}
-				/>
-				<Route
-					exact
-					path="/colour-project/palette/new"
-					render={routeProps => (
-						<NewPaletteForm
-							{...routeProps}
-							savePalette={this.savePalette}
-							palettes={this.state.palettes}
-						/>
-					)}
-				/>
-				<Route
-					exact
-					path="/colour-project/palette/:id"
-					render={routeProps => (
-						<Palette
-							palette={generatePalette(
-								this.findPalette(routeProps.match.params.id)
-							)}
-						/>
-					)}
-				/>
-				<Route
-					path="/colour-project/palette/:paletteId/:colorId"
-					render={routeProps => (
-						<SingleColorPalette
-							colorId={routeProps.match.params.colorId}
-							palette={generatePalette(
-								this.findPalette(routeProps.match.params.paletteId)
-							)}
-						/>
-					)}
-				/>
-
-				<Redirect to="/colour-project" />
-			</Switch>
+			<Route
+				render={({ location }) => (
+					<TransitionGroup>
+						<CSSTransition key={location.key} classNames="page" timeout={500}>
+							<Switch>
+								<Route
+									exact
+									path="/colour-project"
+									render={routeProps => (
+										<PaletteList
+											deletePalette={this.deletePalette}
+											palettes={this.state.palettes}
+											open={this.state.open}
+											openDialog={this.openDialog}
+											closeDialog={this.closeDialog}
+											{...routeProps}
+										/>
+									)}
+								/>
+								<Route
+									exact
+									path="/colour-project/palette/new"
+									render={routeProps => (
+										<div className="page">
+											<NewPaletteForm
+												{...routeProps}
+												savePalette={this.savePalette}
+												palettes={this.state.palettes}
+											/>
+										</div>
+									)}
+								/>
+								<Route
+									exact
+									path="/colour-project/palette/:id"
+									render={routeProps => (
+										<div className="page">
+											<Palette
+												palette={generatePalette(
+													this.findPalette(routeProps.match.params.id)
+												)}
+											/>
+										</div>
+									)}
+								/>
+								<Route
+									path="/colour-project/palette/:paletteId/:colorId"
+									render={routeProps => (
+										<div className="page">
+											<SingleColorPalette
+												colorId={routeProps.match.params.colorId}
+												palette={generatePalette(
+													this.findPalette(routeProps.match.params.paletteId)
+												)}
+											/>
+										</div>
+									)}
+								/>
+								<Redirect to="/colour-project" />
+							</Switch>
+						</CSSTransition>
+					</TransitionGroup>
+				)}
+			/>
 			// {/* <div>
 			// 	<Palette palette={generatePalette(seedColors[4])} />
 			// </div> */}
