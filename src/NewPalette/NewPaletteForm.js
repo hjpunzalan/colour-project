@@ -145,6 +145,7 @@ function NewPaletteForm(props) {
 					colors={colors}
 					deleteBox={deleteBox}
 					onSortEnd={onSortEnd}
+					distance={10}
 				/>
 			</main>
 		</div>
