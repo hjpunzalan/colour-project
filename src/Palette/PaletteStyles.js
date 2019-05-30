@@ -3,12 +3,11 @@ const styles = {
 	Palette: {
 		height: '100vh',
 		display: 'flex',
-		flexDirection: 'column',
-		overflowX: 'hidden'
+		flexDirection: 'column'
 	},
 
 	PaletteColors: {
-		height: '90%'
+		height: '88%'
 	},
 	goBack: {
 		backgroundColor: 'black',

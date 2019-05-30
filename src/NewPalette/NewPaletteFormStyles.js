@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { DRAWER_WIDTH } from '../constants/constants';
+import sizes from '../sizes';
 
 const drawerWidth = DRAWER_WIDTH;
 const useStyles = makeStyles(theme => ({
@@ -24,7 +25,10 @@ const useStyles = makeStyles(theme => ({
 		})
 	},
 	menuButton: {
-		margin: theme.spacing(2)
+		margin: theme.spacing(2),
+		[sizes.down('xs')]: {
+			margin: theme.spacing(0)
+		}
 	},
 	hide: {
 		display: 'none'
@@ -73,11 +77,19 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'space-between',
 
 		'& button': {
-			margin: '0 0.5rem'
+			margin: '0 0.5rem',
+			[sizes.down('xs')]: {
+				padding: '.3rem',
+				fontSize: '.6rem',
+				margin: '.2rem'
+			}
 		},
 
 		'& a': {
 			textDecoration: 'none'
+		},
+		[sizes.down('xs')]: {
+			marginRight: '.5rem'
 		}
 	},
 	container: {
@@ -123,6 +135,14 @@ const useStyles = makeStyles(theme => ({
 		flexDirection: 'column',
 		justifyContent: 'space-around',
 		alignItems: 'center'
+	},
+	navTitle: {
+		[sizes.down('xs')]: {
+			fontSize: '.8rem'
+		},
+		'@media only screen and (max-width: 450px)': {
+			fontSize: '.8rem'
+		}
 	}
 }));
 

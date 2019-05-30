@@ -44,7 +44,7 @@ function PaletteFormNav(props) {
 					>
 						<LibraryAdd />
 					</IconButton>
-					<Typography variant="h6" noWrap>
+					<Typography className={classes.navTitle} variant="h6" noWrap>
 						Create a Palette
 					</Typography>
 				</Toolbar>

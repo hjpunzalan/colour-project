@@ -5,7 +5,8 @@ const styles = {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'flex-start',
-		height: '5vh'
+		height: '7vh',
+		width: '100%'
 	},
 
 	logo: {
@@ -22,13 +23,27 @@ const styles = {
 			color: 'black'
 		},
 		[sizes.down('sm')]: {
-			fontSize: '20px'
+			fontSize: '20px',
+			margin: '0'
+		},
+		[sizes.down('xs')]: {
+			display: 'none'
+		}
+	},
+	sliderContainer: {
+		[sizes.down('xs')]: {
+			display: 'flex',
+			fontSize: '.7rem',
+			padding: '0 .5rem'
 		}
 	},
 	slider: {
 		width: '340px',
 		margin: '0 10px',
 		display: 'inline-block',
+		[sizes.down('xs')]: {
+			width: '7rem'
+		},
 
 		'& .rc-slider-rail': {
 			height: '8px'
@@ -51,8 +66,7 @@ const styles = {
 	},
 
 	selectContainer: {
-		marginLeft: 'auto',
-		marginRight: '2rem'
+		marginLeft: 'auto'
 	}
 };
 
