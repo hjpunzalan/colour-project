@@ -1,3 +1,4 @@
+import sizes from '../sizes';
 const styles = {
 	Palette: {
 		height: '100vh',
@@ -17,7 +18,19 @@ const styles = {
 		display: 'inline-block',
 		position: 'relative',
 		marginBottom: '-4px',
-		cursor: 'pointer'
+		cursor: 'pointer',
+		[sizes.down('lg')]: {
+			width: '75%',
+			height: '33.3333%'
+		},
+		[sizes.down('md')]: {
+			width: '50%',
+			height: '20%'
+		},
+		[sizes.down('xs')]: {
+			width: '100%',
+			height: '10%'
+		}
 	},
 	backButton: {
 		width: '100px',
