@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './PaletteFooterStyles';
 import { withStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
+
+import styles from './PaletteFooterStyles';
 
 function PaletteFooter(props) {
 	const { paletteName, emoji, classes, id } = props;

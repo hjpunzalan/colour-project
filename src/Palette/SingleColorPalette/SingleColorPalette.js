@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import ColorBox from '../ColorBox/ColorBox';
-import Navbar from '../Nav/Navbar';
 import PaletteFooter from '../Footer/PaletteFooter';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
+
+import ColorBox from '../ColorBox/ColorBox';
+import Navbar from '../Nav/Navbar';
 import styles from '../PaletteStyles';
 
 class SingleColorPalette extends Component {

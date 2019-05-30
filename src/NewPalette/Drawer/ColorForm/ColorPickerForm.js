@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { SketchPicker } from 'react-color';
-import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import Button from '@material-ui/core/Button';
 
 export default function ColorPickerForm(props) {
 	const {

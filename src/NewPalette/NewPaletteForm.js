@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import arrayMove from 'array-move';
+
 import PaletteFormNav from './Nav/PaletteFormNav';
 import useStyles from './NewPaletteFormStyles';
 import DraggableColorList from './DraggableColorBox/DraggableColorList';
 import DrawerForm from './Drawer/DrawerForm';
+
 import { MAX_COLORS } from '../constants/constants';
 import seedColors from '../SeedColors/seedColors';
 

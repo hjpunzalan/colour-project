@@ -1,8 +1,9 @@
 import React from 'react';
 import { withStyles } from '@material-ui/styles';
-import styles from './MiniPaletteStyles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import pure from 'recompose/pure';
+
+import styles from './MiniPaletteStyles';
 
 const MiniPalette = props => {
 	const {
