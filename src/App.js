@@ -16,7 +16,8 @@ export default class App extends Component {
 		const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'));
 		this.state = {
 			palettes: savedPalettes || seedColors,
-			open: false
+			open: false,
+			page: 'paletteForward'
 		};
 		this.findPalette = this.findPalette.bind(this);
 		this.deletePalette = this.deletePalette.bind(this);
@@ -55,6 +56,14 @@ export default class App extends Component {
 		this.setState({ open: false });
 	}
 
+	paletteBack = () => {
+		this.setState({ page: 'paletteBack' });
+	};
+
+	paletteForward = () => {
+		this.setState({ page: 'paletteForward' });
+	};
+
 	render() {
 		return (
 			<Route
@@ -66,7 +75,7 @@ export default class App extends Component {
 									exact
 									path="/colour-project"
 									render={routeProps => (
-										<Page back={true}>
+										<Page page={'paletteList'}>
 											<PaletteList
 												deletePalette={this.deletePalette}
 												palettes={this.state.palettes}
@@ -74,6 +83,7 @@ export default class App extends Component {
 												openDialog={this.openDialog}
 												closeDialog={this.closeDialog}
 												{...routeProps}
+												paletteForward={this.paletteForward}
 											/>
 										</Page>
 									)}
@@ -82,7 +92,7 @@ export default class App extends Component {
 									exact
 									path="/colour-project/palette/new"
 									render={routeProps => (
-										<Page back={false}>
+										<Page page={'newPalette'}>
 											<NewPaletteForm
 												{...routeProps}
 												savePalette={this.savePalette}
@@ -95,11 +105,12 @@ export default class App extends Component {
 									exact
 									path="/colour-project/palette/:id"
 									render={routeProps => (
-										<Page back={false}>
+										<Page page={this.state.page}>
 											<Palette
 												palette={generatePalette(
 													this.findPalette(routeProps.match.params.id)
 												)}
+												goBack={this.goBack}
 											/>
 										</Page>
 									)}
@@ -107,8 +118,9 @@ export default class App extends Component {
 								<Route
 									path="/colour-project/palette/:paletteId/:colorId"
 									render={routeProps => (
-										<Page back={false}>
+										<Page page={'singleColorPalette'}>
 											<SingleColorPalette
+												paletteBack={this.paletteBack}
 												colorId={routeProps.match.params.colorId}
 												palette={generatePalette(
 													this.findPalette(routeProps.match.params.paletteId)

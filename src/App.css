@@ -3,31 +3,77 @@
     position: fixed;
     width: 100%;
     top: 0;
-    transition: transform 0.5s;
+    transition: transform .5s;
 }
 
-.page-back.page-enter {
+.paletteList.page-enter {
     transform: translateX(-100%)
 }
 
-.page-back.page-enter-active {
+.paletteList.page-enter-active {
     transform: translateX(0);
 }
 
-.page-back.page-exit-active {
+.paletteList.page-exit-active {
     transform: translateX(-100%)
 }
 
 
 
-.page-forward.page-enter {
+.newPalette.page-enter {
     transform: translateX(100%)
 }
 
-.page-forward.page-enter-active {
+.newPalette.page-enter-active {
     transform: translateX(0);
 }
 
-.page-forward.page-exit-active {
+.newPalette.page-exit-active {
     transform: translateX(100%)
 }
+
+
+.paletteForward.page-enter {
+    transform: translateX(100%)
+}
+
+.paletteForward.page-enter-active {
+    transform: translateX(0);
+}
+
+.paletteForward.page-exit-active {
+    transform: translateX(100%)
+}
+
+.singleColorPalette.page-enter {
+    transform: translateX(100%)
+}
+
+.singleColorPalette.page-enter-active {
+    transform: translateX(0);
+}
+
+.singleColorPalette.page-exit-active {
+    transform: translateX(100%)
+}
+
+/* //////////////////// */
+.paletteBack.page-exit-active {
+    transform: translateX(-100%)
+}
+
+.paletteBack.page-enter {
+    transform: translateX(-100%)
+}
+
+.paletteBack.page-enter-active {
+    transform: translateX(0);
+}
+
+/* 
+.Palette.page-enter-active {
+    transform: translateX(-100%)
+} */
+/* 
+<section class="page Palette page-enter page-enter-active">
+<section class="page singleColorPalette page-exit page-exit-active"> */

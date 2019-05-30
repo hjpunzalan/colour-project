@@ -26,6 +26,10 @@ class PaletteList extends Component {
 		this.handleClose = this.handleClose.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
 	}
+	componentDidMount() {
+		this.props.paletteForward();
+	}
+
 	goToPalette(id) {
 		this.props.history.push(`/colour-project/palette/${id}`);
 	}
