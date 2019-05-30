@@ -15,6 +15,11 @@ export default class App extends Component {
 			palettes: savedPalettes || seedColors
 		};
 		this.findPalette = this.findPalette.bind(this);
+		this.deletePalette = this.deletePalette.bind(this);
+	}
+	deletePalette(id) {
+		const deletedPalette = this.state.palettes.filter(p => p.id !== id);
+		this.setState({ palettes: deletedPalette }, this.syncLocalStorage);
 	}
 
 	findPalette(id) {
@@ -44,7 +49,11 @@ export default class App extends Component {
 					exact
 					path="/colour-project"
 					render={routeProps => (
-						<PaletteList palettes={this.state.palettes} {...routeProps} />
+						<PaletteList
+							deletePalette={this.deletePalette}
+							palettes={this.state.palettes}
+							{...routeProps}
+						/>
 					)}
 				/>
 				<Route
