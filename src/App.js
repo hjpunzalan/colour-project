@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Page from './Page';
@@ -131,7 +131,21 @@ export default class App extends Component {
 										</Page>
 									)}
 								/>
-								<Redirect to="/colour-project" />
+								<Route
+									render={routeProps => (
+										<Page page={'paletteList'}>
+											<PaletteList
+												deletePalette={this.deletePalette}
+												palettes={this.state.palettes}
+												open={this.state.open}
+												openDialog={this.openDialog}
+												closeDialog={this.closeDialog}
+												{...routeProps}
+												paletteForward={this.paletteForward}
+											/>
+										</Page>
+									)}
+								/>
 							</Switch>
 						</CSSTransition>
 					</TransitionGroup>

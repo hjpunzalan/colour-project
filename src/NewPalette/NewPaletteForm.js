@@ -76,6 +76,8 @@ function NewPaletteForm(props) {
 		) {
 			setColor([...colors, randomColor]);
 		} else {
+			// prevent duplicate colors
+			// Tested with three different colors
 			addRandomColor();
 		}
 	}
