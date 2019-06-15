@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { withStyles } from '@material-ui/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
-import pure from 'recompose/pure';
 
 import styles from './MiniPaletteStyles';
 
@@ -41,4 +40,4 @@ const MiniPalette = props => {
 	);
 };
 
-export default withStyles(styles)(pure(MiniPalette));
+export default withStyles(styles)(memo(MiniPalette));

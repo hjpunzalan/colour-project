@@ -134,11 +134,10 @@ function NewPaletteForm(props) {
 			<main
 				className={clsx(classes.content, {
 					[classes.contentShift]: open
-				})}
-			>
+				})}>
 				<div className={classes.drawerHeader} />
 				<DraggableColorList
-					axis="xy"
+					axis='xy'
 					colors={colors}
 					deleteBox={deleteBox}
 					onSortEnd={onSortEnd}

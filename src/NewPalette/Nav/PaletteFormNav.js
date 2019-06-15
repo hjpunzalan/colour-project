@@ -1,6 +1,5 @@
 import React from 'react';
 import clsx from 'clsx';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -26,25 +25,22 @@ function PaletteFormNav(props) {
 
 	return (
 		<div className={classes.root}>
-			<CssBaseline />
 			<AppBar
-				color="default"
-				position="fixed"
+				color='default'
+				position='fixed'
 				className={clsx(classes.appBar, {
 					[classes.appBarShift]: open
-				})}
-			>
+				})}>
 				<Toolbar disableGutters={!open}>
 					<IconButton
-						color="inherit"
-						aria-label="Open drawer"
+						color='inherit'
+						aria-label='Open drawer'
 						onClick={handleDrawerOpen}
-						edge="start"
-						className={clsx(classes.menuButton, open && classes.hide)}
-					>
+						edge='start'
+						className={clsx(classes.menuButton, open && classes.hide)}>
 						<LibraryAdd />
 					</IconButton>
-					<Typography className={classes.navTitle} variant="h6" noWrap>
+					<Typography className={classes.navTitle} variant='h6' noWrap>
 						Create a Palette
 					</Typography>
 				</Toolbar>
@@ -59,12 +55,12 @@ function PaletteFormNav(props) {
 						classes={classes}
 						{...props}
 					/>
-					<Link to="/colour-project">
-						<Button variant="contained" color="secondary">
+					<Link to='/colour-project'>
+						<Button variant='contained' color='secondary'>
 							Go Back
 						</Button>
 					</Link>
-					<Button variant="contained" color="primary" onClick={formOpen}>
+					<Button variant='contained' color='primary' onClick={formOpen}>
 						SAVE
 					</Button>
 				</div>

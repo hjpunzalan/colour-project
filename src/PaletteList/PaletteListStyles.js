@@ -35,6 +35,7 @@ export default {
 		display: 'flex',
 		width: '100%',
 		justifyContent: 'space-between',
+		fontSize: '1.2rem',
 		color: 'white',
 		alignItems: 'center',
 		margin: '1rem 0',
@@ -56,6 +57,10 @@ export default {
 				borderRadius: '2px'
 			}
 		}
+	},
+
+	link: {
+		fontSize: '1.2rem'
 	},
 	palettes: {
 		boxSizing: 'border-box',

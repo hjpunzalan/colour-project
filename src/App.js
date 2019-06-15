@@ -71,11 +71,11 @@ export default class App extends Component {
 			<Route
 				render={({ location }) => (
 					<TransitionGroup>
-						<CSSTransition key={location.key} classNames="page" timeout={500}>
+						<CSSTransition key={location.key} classNames='page' timeout={500}>
 							<Switch location={location}>
 								<Route
 									exact
-									path="/colour-project"
+									path='/colour-project'
 									render={routeProps => (
 										<Page page={'paletteList'}>
 											<PaletteList
@@ -84,15 +84,15 @@ export default class App extends Component {
 												open={this.state.open}
 												openDialog={this.openDialog}
 												closeDialog={this.closeDialog}
-												{...routeProps}
 												paletteForward={this.paletteForward}
+												{...routeProps}
 											/>
 										</Page>
 									)}
 								/>
 								<Route
 									exact
-									path="/colour-project/palette/new"
+									path='/colour-project/palette/new'
 									render={routeProps => (
 										<Page page={'newPalette'}>
 											<NewPaletteForm
@@ -105,7 +105,7 @@ export default class App extends Component {
 								/>
 								<Route
 									exact
-									path="/colour-project/palette/:id"
+									path='/colour-project/palette/:id'
 									render={routeProps => (
 										<Page page={this.state.page}>
 											<Palette
@@ -118,7 +118,8 @@ export default class App extends Component {
 									)}
 								/>
 								<Route
-									path="/colour-project/palette/:paletteId/:colorId"
+									exact
+									path='/colour-project/palette/:paletteId/:colorId'
 									render={routeProps => (
 										<Page page={'singleColorPalette'}>
 											<SingleColorPalette
@@ -131,29 +132,11 @@ export default class App extends Component {
 										</Page>
 									)}
 								/>
-								<Route
-									render={routeProps => (
-										<Page page={'paletteList'}>
-											<PaletteList
-												deletePalette={this.deletePalette}
-												palettes={this.state.palettes}
-												open={this.state.open}
-												openDialog={this.openDialog}
-												closeDialog={this.closeDialog}
-												{...routeProps}
-												paletteForward={this.paletteForward}
-											/>
-										</Page>
-									)}
-								/>
 							</Switch>
 						</CSSTransition>
 					</TransitionGroup>
 				)}
 			/>
-			// {/* <div>
-			// 	<Palette palette={generatePalette(seedColors[4])} />
-			// </div> */}
 		);
 	}
 }
