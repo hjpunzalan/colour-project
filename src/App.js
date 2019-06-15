@@ -68,9 +68,12 @@ export default class App extends Component {
 	};
 
 	sortPalettes = ({ oldIndex, newIndex }) => {
-		this.setState(({ palettes }) => ({
-			palettes: arrayMove(palettes, oldIndex, newIndex)
-		}));
+		this.setState(
+			({ palettes }) => ({
+				palettes: arrayMove(palettes, oldIndex, newIndex)
+			}),
+			this.syncLocalStorage
+		);
 	};
 
 	render() {

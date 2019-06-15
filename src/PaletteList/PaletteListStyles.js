@@ -22,7 +22,7 @@ export default {
 		// /* background by SVGBackgrounds.com */
 	},
 	container: {
-		width: '50%',
+		width: '70%',
 		height: '100%',
 		display: 'flex',
 		alignItems: 'flex-start',
@@ -65,10 +65,8 @@ export default {
 	palettes: {
 		boxSizing: 'border-box',
 		width: '100%',
-		display: 'grid',
-		gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-		gridColumnGap: '5%',
-		gridRowGap: '2%',
+		display: 'flex',
+		flexWrap: 'wrap',
 		[sizes.down('xs')]: {
 			width: '90%'
 		}

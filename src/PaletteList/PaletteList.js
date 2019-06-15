@@ -92,7 +92,7 @@ class PaletteList extends Component {
 						goToPalette={this.goToPalette}
 						deleteDialog={this.deleteDialog}
 						axis='xy'
-						distance={100}
+						distance={10}
 						onSortEnd={sortPalettes}
 					/>
 				</div>

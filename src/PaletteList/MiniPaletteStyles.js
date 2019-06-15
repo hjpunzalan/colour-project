@@ -1,6 +1,9 @@
 const styles = {
 	root: {
 		backgroundColor: 'white',
+		width: '25%',
+		minWidth: '280px',
+		margin: '1rem 4%',
 		border: '1px solid  black',
 		borderRadius: '5px',
 		padding: '0.5rem',
@@ -43,7 +46,6 @@ const styles = {
 		position: 'relative',
 		marginBottom: '0'
 	},
-	delete: {},
 	deleteIcon: {
 		color: 'white',
 		backgroundColor: '#eb3d30',
