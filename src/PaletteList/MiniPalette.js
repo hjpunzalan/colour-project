@@ -1,10 +1,11 @@
 import React, { memo } from 'react';
 import { withStyles } from '@material-ui/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { SortableElement } from 'react-sortable-hoc';
 
 import styles from './MiniPaletteStyles';
 
-const MiniPalette = props => {
+const MiniPalette = SortableElement(props => {
 	const {
 		classes,
 		paletteName,
@@ -38,6 +39,6 @@ const MiniPalette = props => {
 			</h5>
 		</div>
 	);
-};
+});
 
 export default withStyles(styles)(memo(MiniPalette));

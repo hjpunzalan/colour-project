@@ -17,6 +17,27 @@ import CloseIcon from '@material-ui/icons/Close';
 import MiniPalette from './MiniPalette';
 import styles from './PaletteListStyles';
 
+import { SortableContainer } from 'react-sortable-hoc';
+
+const SortableList = SortableContainer(
+	({ palettes, deleteDialog, goToPalette, classes }) => (
+		<TransitionGroup className={classes.palettes}>
+			{palettes.map((p, index) => (
+				<CSSTransition key={p.id} classNames='palette' timeout={500}>
+					<MiniPalette
+						index={index}
+						deleteDialog={deleteDialog}
+						id={p.id}
+						key={p.id}
+						{...p}
+						handleClick={goToPalette}
+					/>
+				</CSSTransition>
+			))}
+		</TransitionGroup>
+	)
+);
+
 class PaletteList extends Component {
 	constructor(props) {
 		super(props);
@@ -52,7 +73,7 @@ class PaletteList extends Component {
 	}
 
 	render() {
-		const { palettes, classes, open } = this.props;
+		const { palettes, classes, open, sortPalettes } = this.props;
 		return (
 			<div className={classes.root}>
 				<div className={classes.container}>
@@ -65,19 +86,15 @@ class PaletteList extends Component {
 							Create Palette
 						</Link>
 					</nav>
-					<TransitionGroup className={classes.palettes}>
-						{palettes.map(p => (
-							<CSSTransition key={p.id} classNames='palette' timeout={500}>
-								<MiniPalette
-									deleteDialog={this.deleteDialog}
-									id={p.id}
-									key={p.id}
-									{...p}
-									handleClick={this.goToPalette}
-								/>
-							</CSSTransition>
-						))}
-					</TransitionGroup>
+					<SortableList
+						palettes={palettes}
+						classes={classes}
+						goToPalette={this.goToPalette}
+						deleteDialog={this.deleteDialog}
+						axis='xy'
+						distance={100}
+						onSortEnd={sortPalettes}
+					/>
 				</div>
 				<Dialog open={open} aria-labelledby='delete-dialog-title'>
 					<DialogTitle id='delete-dialog-title'>Delete Palette?</DialogTitle>

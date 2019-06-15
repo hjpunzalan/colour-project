@@ -56,7 +56,7 @@ function NewPaletteForm(props) {
 	function deleteBox(colorName) {
 		setColor(colors.filter(color => color.name !== colorName));
 	}
-	function onSortEnd({ oldIndex, newIndex }) {
+	function onSortColors({ oldIndex, newIndex }) {
 		setColor(arrayMove(colors, oldIndex, newIndex));
 	}
 
@@ -140,7 +140,7 @@ function NewPaletteForm(props) {
 					axis='xy'
 					colors={colors}
 					deleteBox={deleteBox}
-					onSortEnd={onSortEnd}
+					onSortEnd={onSortColors}
 					distance={10}
 				/>
 			</main>

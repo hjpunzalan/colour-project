@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import arrayMove from 'array-move';
 
 import Page from './Page';
 import Palette from './Palette/Palette';
@@ -66,6 +67,12 @@ export default class App extends Component {
 		this.setState({ page: 'paletteForward' });
 	};
 
+	sortPalettes = ({ oldIndex, newIndex }) => {
+		this.setState(({ palettes }) => ({
+			palettes: arrayMove(palettes, oldIndex, newIndex)
+		}));
+	};
+
 	render() {
 		return (
 			<Route
@@ -85,6 +92,7 @@ export default class App extends Component {
 												openDialog={this.openDialog}
 												closeDialog={this.closeDialog}
 												paletteForward={this.paletteForward}
+												sortPalettes={this.sortPalettes}
 												{...routeProps}
 											/>
 										</Page>
