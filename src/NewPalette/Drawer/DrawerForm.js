@@ -28,13 +28,12 @@ export class DrawerForm extends Component {
 			<div>
 				<Drawer
 					className={classes.drawer}
-					variant="persistent"
-					anchor="left"
+					variant='persistent'
+					anchor='left'
 					open={open}
 					classes={{
 						paper: classes.drawerPaper
-					}}
-				>
+					}}>
 					<div className={classes.drawerHeader}>
 						<IconButton onClick={handleDrawerClose}>
 							<ChevronLeftIcon />
@@ -42,25 +41,23 @@ export class DrawerForm extends Component {
 					</div>
 					<Divider />
 					<div className={classes.container}>
-						<Typography variant="h4" gutterBottom>
+						<Typography variant='h4' gutterBottom>
 							Design Your Palette
 						</Typography>
 						<div className={classes.buttons}>
 							<Button
 								className={classes.button}
-								variant="contained"
-								color="secondary"
-								onClick={clearColors}
-							>
+								variant='contained'
+								color='secondary'
+								onClick={clearColors}>
 								Clear Palette
 							</Button>
 							<Button
 								className={classes.button}
-								variant="contained"
-								color="primary"
+								variant='contained'
+								color='primary'
 								onClick={addRandomColor}
-								disabled={paletteIsFull}
-							>
+								disabled={paletteIsFull}>
 								Random Colour
 							</Button>
 						</div>

@@ -105,7 +105,10 @@ const useStyles = makeStyles(theme => ({
 		marginBottom: '1rem'
 	},
 	button: {
-		width: '50%'
+		width: '50%',
+		[sizes.down('xs')]: {
+			fontSize: '.6rem'
+		}
 	},
 	picker: {
 		width: '80% !important',
