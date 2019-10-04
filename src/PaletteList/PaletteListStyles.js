@@ -22,7 +22,8 @@ export default {
 		// /* background by SVGBackgrounds.com */
 	},
 	container: {
-		width: '70%',
+		width: '100%',
+		maxWidth: '1100px',
 		height: '100%',
 		display: 'flex',
 		alignItems: 'flex-start',
@@ -65,11 +66,9 @@ export default {
 	palettes: {
 		boxSizing: 'border-box',
 		width: '100%',
-		display: 'flex',
-		flexWrap: 'wrap',
-		[sizes.down('xs')]: {
-			width: '90%'
-		}
+		display: 'grid',
+		gridTemplateColumns: 'repeat(auto-fill,minmax(300px, 1fr))',
+		justifyItems: 'center'
 	},
 	logo: {
 		fontFamily: 'Pacifico, cursive',
